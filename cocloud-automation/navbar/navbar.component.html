@@ -1,0 +1,40 @@
+<div class="d-flex flex-row justify-content-between py-3 navbar">
+    <div class="d-flex flex-row justify-content-between align-items-center navbar-logo">
+        <img src="/cocloud-logo.jpg" alt="logo" class="logo" />
+        <i (click)="sidebarToggle()" class="bi bi-list hamburger-icon "></i>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mx-3 search-container" style="flex: 1; min-width: 0; justify-content: center;">
+        <app-header-search scope="partner"></app-header-search>
+    </div>
+
+    <div class="d-flex flex-row">
+        <div class="mx-2 d-flex justify-content-center align-items-center">
+            <app-theme-toggle></app-theme-toggle>
+        </div>
+        <div class="mx-3 d-flex justify-content-center align-items-center">
+            <div class="wallet">
+                <span class="d-none d-md-block">Wallet: {{walletAmount | currency:"INR"}}</span>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center mx-1">
+            <i class="bi bi-wallet2 d-md-none d-block icon me-4"
+                matTooltip="Wallet: {{walletAmount | currency:'INR'}}"></i>
+            <i class="bi bi-person-circle user"></i>
+            <div class=" mx-3 d-none d-md-block" style="font-size: 1.15rem; font-weight: 500;">{{userName}}</div>
+            <div class=" mx-3 dropstart">
+                <div type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-three-dots-vertical me-1 icon"></i>
+                </div>
+                <ul class="dropdown-menu p-2">
+                    <li class="p-2" (click)="settings()" *ngIf="userType"><i class="bi bi-gear me-2"></i>Settings</li>
+                    <li class="p-2" (click)="logout()"><i class="bi bi-power me-2"></i> Logout</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+
+        </div>
+    </div>
+</div>

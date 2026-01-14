@@ -1,0 +1,49 @@
+<div class="search-box" (click)="openSearchBox()">
+  <div class="search-header" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+    aria-expanded="false" aria-controls="collapseExample">
+    <div class="search-header-left">
+      <i class="bi bi-search"></i>
+      <span>Search here</span>
+    </div>
+    <i class="bi bi-chevron-down chevron-icon"></i>
+  </div>
+  <div class="collapse" id="collapseExample">
+    <div class="search-field-area">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-3">
+          <div class="col" *ngFor="let field of searchFields">
+            <ng-container [ngSwitch]="field.fieldType">
+              <!-- Input Field -->
+              <mat-form-field *ngSwitchCase="'input'" style="width: 100%;" appearance="fill">
+                <mat-label>{{field.placeholder}}</mat-label>
+                <input class="input-box" matInput [id]="field.id" [type]="field.type"
+                  [formControlName]="field.id" />
+              </mat-form-field>
+
+              <ng-container class="input-box" *ngSwitchCase="'dropdown'">
+                <app-dropdown [data]="field" type="searchForm" (searchData)="fetchDropdownData($event)"
+                  [initialValues]="field.initialSelectedValue">
+                </app-dropdown>
+              </ng-container>
+
+              <ng-container *ngSwitchCase="'datePicker'">
+                <app-datepicker [data]="field" (dates)="userSelectedDates($event)">
+                </app-datepicker>
+              </ng-container>
+
+              <ng-container *ngSwitchCase="'monthPicker'">
+                <app-month-year-picker (searchDate)="userSelectedMonth($event)" componentUsed="license-details">
+                </app-month-year-picker>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="search-box-buttons d-flex flex-row justify-content-end">
+          <button type="submit" class="btn search-btn btn-primary" [disabled]="form.invalid">Search</button>
+          <button type="button" (click)="resetSearch()" class="btn reset-btn ms-3">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

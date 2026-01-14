@@ -1,0 +1,76 @@
+/* Avoid global font override */
+body {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Headings */
+.heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4B49AC;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.heading i {
+  color: #4B49AC;
+  font-size: 1.2rem;
+  -webkit-text-stroke: 0.4px;
+}
+
+/* Chart container adjustments */
+#riskyCustomerChart,
+#paidSubTrendChart,
+#trialReportChart,
+#mrrReportChart {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* "Reseller" number overlay */
+.reseller {
+  position: relative;
+  top: -11rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #4B49AC;
+  text-align: center;
+}
+
+.reseller .numbers {
+  font-size: 1.6rem;
+  color: #000;
+  margin-bottom: 0.25rem;
+}
+
+.reseller p {
+  margin: 0;
+}
+
+.other-charts {
+  width: 100%;
+  height: 400px;
+  display: flex;
+}
+
+.trial-chart {
+  width: 100%;
+  height: 400px;
+  display: table-cell;
+  position: absolute;
+}
+
+.mrr-report-chart {
+  width: 100%;
+  height: 400px;
+  display: table-cell;
+  position: absolute;
+}

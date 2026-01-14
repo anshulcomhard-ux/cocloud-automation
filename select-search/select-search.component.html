@@ -1,0 +1,16 @@
+<div class="mb-3 select-section">
+    <div class="search-select pe-2 ps-3 py-1 d-flex flex-row justify-content-between align-items-center" type="button"
+        data-bs-toggle="dropdown" aria-expanded="false" [class.disabled]="disabled" [attr.disabled]="disabled ? true : null">
+        <span>{{field.initialSelectedValue? field.initialSelectedValue : selectedOption ? selectedOption : field.placeholder}}</span>
+        <i *ngIf="!disabled" class="bi bi-chevron-down icon"></i>
+    </div>
+    <div class="dropdown-menu dropdown-list w-100 pt-3">
+        <div class="input-group mb-3 px-2">
+            <input type="text" class="form-control" placeholder="Search..." aria-label="search"
+                aria-describedby="basic-addon1" (input)="onSearch($event)">
+        </div>
+        <div class="data-section">
+            <li *ngFor="let option of field.dropdownData" (click)="selectedValue(option)">{{option.value}}</li>
+        </div>
+    </div>
+</div>

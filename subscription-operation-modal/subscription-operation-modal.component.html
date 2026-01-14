@@ -1,0 +1,174 @@
+<div class="modal-section p-3">
+    <!-- Header -->
+    <div class="modal-heading">
+        {{ title }}
+    </div>
+    <div *ngIf="subTitle" class="modal-sub-heading my-3">{{ subTitle }}</div>
+    <div *ngIf="message" class="modal-message my-3">{{ message }}</div>
+
+    <!-- Subscription List -->
+    <div *ngIf="isSubscriptionList" class="mb-3">
+        <div class="form-check mb-2" *ngFor="let option of subscriptionOptions">
+            <input class="form-check-input" type="radio" name="subscriptionId" [id]="option.value"
+                [value]="option.value" (change)="loginWithPartner(option.value)" />
+            <label class="form-check-label" [for]="option.value">
+                {{ option.label }}
+            </label>
+        </div>
+    </div>
+
+    <!-- Extra Note -->
+    <ng-container *ngIf="notePosition === 'top'">
+        <div *ngIf="note" class="mt-3 p-2 rounded" [ngClass]="note_class" [innerHTML]="note"></div>
+    </ng-container>
+
+    <ng-container *ngIf="topSpecialNotes && topSpecialNotes.length > 0">
+        <div class="plan-summary-inline plan-font mb-2 warning-bg">
+            <ng-container *ngFor="let note of topSpecialNotes; let last = last">
+                <span class="label ps-2">{{note.key}}</span>
+                <span [ngClass]="note.class? note.class : 'value'">{{note.value}}</span>
+                <span class="divider" *ngIf="!last">|</span>
+            </ng-container>
+        </div>
+    </ng-container>
+
+    <!-- Dynamic Form -->
+    <form *ngIf="formFields && formFields.length > 0" [formGroup]="form" (ngSubmit)="handleSubmit()">
+        <div class="row my-4">
+            <ng-container class="mb-3" *ngFor="let field of formFields">
+                <div *ngIf="field.isVisible"  [ngClass]="formFields.length > 4 ? 'col-md-6' : 'col-md-12'">
+                <!-- Input Fields -->
+                    <ng-container *ngIf="field.fieldType === 'input' && field.isVisible">
+                        <label [for]="field.id" class="form-label">
+                            {{ field.label || field.placeholder }}
+                            <span *ngIf="field?.isRequired" class="text-danger">*</span>
+                        </label>
+                        <input [formControlName]="field.id" [type]="field.type || 'text'" class="form-control"
+                            [id]="field.id" [required]="field?.isRequired" [readonly]="field.isReadOnly"
+                            [attr.min]="field.type === 'number' && field.minValue ? field.minValue : null"
+                            [ngStyle]="{ 'background-color': field.isReadOnly ? 'var(--bg-tertiary)' : 'var(--bg-tertiary)' }"
+                            [placeholder]="field.placeholder || field.label" />
+
+                        <!-- Field Validation Messages -->
+                        <div *ngIf="form.get(field.id)?.invalid && (form.get(field.id)?.touched || form.get(field.id)?.dirty)"
+                            class="text-danger mt-1">
+                            <small *ngIf="form.get(field.id)?.errors?.['required']">
+                                {{ field.placeholder || field.label }} is required
+                            </small>
+                            <small *ngIf="field.id === 'mobile' && form.get(field.id)?.errors?.['minlength']">
+                                Please enter a valid mobile number
+                            </small>
+                            <small *ngIf="form.get(field.id)?.errors?.['pattern']">
+                                Please enter a valid {{ field.placeholder || field.label }}
+                            </small>
+                            <small *ngIf="form.get(field.id)?.errors?.['email']">
+                                Please enter a valid email address
+                            </small>
+                        </div>
+                    </ng-container>
+
+                    <!-- Select Fields -->
+                    <ng-container *ngIf="field.fieldType === 'select' && field.isVisible">
+                        <label [for]="field.id" class="form-label">
+                            {{ field.placeholder }}
+                            <span *ngIf="field?.isRequired" class="text-danger">*</span>
+                        </label>
+
+                        <!-- With search -->
+                        <app-select-search *ngIf="field.isSearch" [field]="field"
+                            (emitSelectedValue)="patchSelectedValue($event, field)">
+                        </app-select-search>
+
+                        <!-- Without search -->
+                        <select *ngIf="!field.isSearch" class="form-select" [id]="field.id" [formControlName]="field.id"
+                            [class.disabled-select]="field.isReadOnly" [required]="field.isRequired">
+                            <option value="" disabled>Select {{ field.placeholder.toLowerCase() }}</option>
+                            <option *ngFor="let option of field.dropdownData" [value]="option._id">
+                                {{ option.value }}
+                            </option>
+                        </select>
+
+                        <!-- Select Validation Messages -->
+                        <div *ngIf="form.get(field.id)?.invalid && (form.get(field.id)?.touched || form.get(field.id)?.dirty)"
+                            class="text-danger mt-1">
+                            <small *ngIf="form.get(field.id)?.errors?.['required']">
+                                {{ field.placeholder }} is required
+                            </small>
+                        </div>
+                    </ng-container>
+
+                    <!-- Textarea Fields -->
+                    <ng-container *ngIf="field.fieldType === 'textarea' && field.isVisible">
+                        <label [for]="field.id" class="form-label">
+                            {{ field.label || field.placeholder }}
+                            <span *ngIf="field?.isRequired" class="text-danger">*</span>
+                        </label>
+                        <textarea [formControlName]="field.id" class="form-control" [id]="field.id"
+                            [required]="field?.isRequired" [readonly]="field.isReadOnly"
+                            [placeholder]="field.placeholder || field.label" rows="3">
+                        </textarea>
+
+                        <!-- Textarea Validation Messages -->
+                        <div *ngIf="form.get(field.id)?.invalid && (form.get(field.id)?.touched || form.get(field.id)?.dirty)"
+                            class="text-danger mt-1">
+                            <small *ngIf="form.get(field.id)?.errors?.['required']">
+                                {{ field.placeholder || field.label }} is required
+                            </small>
+                        </div>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </div>
+    </form>
+
+    <!-- Special Notes -->
+    <ng-container *ngIf="specialNotes && specialNotes.length > 0">
+        <div class="plan-summary-inline plan-font mb-2">
+            <ng-container *ngFor="let note of specialNotes; let last = last">
+                <span class="label">{{note.key}}</span>
+                <span [ngClass]="note.class? note.class : 'value'">{{note.value}}</span>
+                <span class="divider" *ngIf="!last">|</span>
+            </ng-container>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="specialNotes2 && specialNotes2.length > 0">
+        <div class="plan-summary-inline plan-font mb-2">
+            <ng-container *ngFor="let note of specialNotes2; let last = last">
+                <span class="label">{{note.key}}</span>
+                <span [ngClass]="note.class? note.class : 'value'">{{note.value}}</span>
+                <span class="divider" *ngIf="!last">|</span>
+            </ng-container>
+        </div>
+    </ng-container>
+
+    <div *ngIf="endDate && nextRenewalDate && payableAmount">
+        <div class="summary-item">
+            <span class="label">Current Renewal Date:</span>
+            <span class="value">{{ endDate | date: 'dd/MM/yyyy' }}</span>
+        </div>
+
+        <div class="summary-item">
+            <span class="label">Next Renewal Date:</span>
+            <span class="value">{{ nextRenewalDate | date: 'dd/MM/yyyy' }}</span>
+        </div>
+
+        <div class="summary-item">
+            <span class="label">Payable Amount:</span>
+            <span class="value text-danger">₹{{ payableAmount | number: '1.0-0' }}</span>
+        </div>
+    </div>
+        <ng-container *ngIf="notePosition === 'bottom'">
+        <div *ngIf="note" class="mt-3 p-2 rounded" [ngClass]="note_class" [innerHTML]="note"></div>
+    </ng-container>
+
+    <!-- Footer -->
+    <div class="d-flex justify-content-end align-items-center gap-2 mt-4 pt-3 border-top">
+        <button class="btn btn-primary confirm-btn" type="button" (click)="handleSubmit()"
+            [disabled]="form && formFields.length > 0 && form.invalid">
+            {{ confirmText }}
+        </button>
+        <button type="button" class="btn cancel-btn " (click)="resetModal()">
+            {{ cancelText }}
+        </button>
+    </div>
+</div>

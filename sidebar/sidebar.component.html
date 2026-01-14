@@ -1,0 +1,44 @@
+<div class="sidebar ps-3" [ngClass]="{'active-sidebar': sidebarToggle }">
+  <div *ngFor="let item of sidebarItems" class="mx-1">
+
+    <!-- Normal item -->
+    <div *ngIf="!item.subItems && showItem(item)" class="d-flex flex-row sidebar-items"
+      [routerLink]="!item.isknowledgeBase ? item.link : null" [attr.target]="item.isknowledgeBase ? '_blank' : null"
+      routerLinkActive="active-section"
+      [routerLinkActiveOptions]="item.title == 'Dashboard' ? { exact: true } : {exact:false}"
+      (click)="resetSections(item)">
+      <i class="me-3" [ngClass]="item.icon"></i>
+      <span class="title fs-6">{{item.title}}</span>
+      <i *ngIf="item.isknowledgeBase" class="bi bi-arrow-up-right ms-auto"
+        [ngClass]="currentSection == item.link ? 'rotate-float-icon' : '' "></i>
+    </div>
+
+    <!-- Dropdown item -->
+    <div *ngIf="item.subItems && showItem(item)" class="dropdown-sidebar-items dropdown-section"
+      [ngClass]="currentSection == item.link ? 'active-dropdown p-3' : ''"
+      [ngStyle]="{'height': currentSection === item.link ? 'calc(2.5rem + ' + (getVisibleSubItemsCount(item.subItems) * 2.5) + 'rem)' : '2.5rem'}">
+
+      <div class="d-flex flex-row justify-content-between" (click)="openDropdown(item.link)">
+        <div>
+          <i class="bi" [ngClass]="item.icon"></i>
+          <span class="title">{{item.title}}</span>
+        </div>
+        <i *ngIf="item.subItems" class="bi bi-chevron-right rotate-icon"
+          [ngClass]="currentSection == item.link ? 'rotate-float-icon' : '' "></i>
+      </div>
+
+      <!-- Sub Items -->
+      <div *ngIf="item.subItems && currentSection == item.link" class="sub-items"
+        [ngClass]="{'active-dropdown-subItems':currentSection == item.link && item.subItems}">
+        <ul>
+          <ng-container *ngFor="let subItem of item.subItems">
+            <li *ngIf="showItem(subItem)" [routerLink]="subItem.link" routerLinkActive="active-li"
+              (click)="changeSubSection(subItem.link)">
+              {{ subItem.title }}
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

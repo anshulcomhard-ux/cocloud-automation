@@ -1,0 +1,53 @@
+<div class="modal-section p-4">
+    <div class="modal-heading">{{title}}</div>
+    <div class="modal-sub-heading my-3">{{subTitle}}</div>
+
+    <div *ngIf="specialModal" class="modal-main">
+        <div class="d-flex justify-content-center align-items-center">
+            <img [src]="specialModal?.src" />
+        </div>
+        <div class="text-center my-3 fs-3 fs-bold">{{specialModal.title}}</div>
+
+        <div class="modal-message my-3">{{specialModal.message}}</div>
+
+        <div *ngFor="let detail of specialModal.details" class="my-2 d-flex flex-row justify-content-between">
+            <span class="modal-sub-heading">{{detail.key}}</span>
+            <span class="modal-message">{{detail.value}}</span>
+        </div>
+        <button class="w-100 btn-label" [routerLink]="specialModal.redirectUrl"
+            (click)="this.bsModalRef.hide()">{{specialModal.btnmsg}}</button>
+    </div>
+    <div class="modal-message my-3">{{message}}</div>
+
+    <!-- radio buttons -->
+    <div *ngIf="isSubscriptionList" class="mb-3">
+    <div class="form-check mb-3" *ngFor="let option of subscriptionOptions">
+        <input class="form-check-input" type="radio" name="subscriptionId" [id]="option.value" [value]="option.value" (click)="loginWithPartner(option.value)"/>
+        <label class="form-check-label" [for]="option.value">
+        {{ option.label }}
+        </label>
+    </div>
+    </div>
+
+
+    <app-form *ngIf="formFields.length > 0" [form]="form" [formFields]="formFields" (sendForm)="submitForm($event)"
+        [formUsedComponent]="formUsedComponent" [isSubmitButton]='isSubmitButton' [fromModal]='true' [class]="class"></app-form>
+
+    <div *ngIf="isExtraFields || specialNotes">
+        <app-form [form]="form" [formFields]="extraFields" [formUsedComponent]="formUsedComponent"
+            (sendForm)="submitForm($event)" [isSubmitButton]='false'></app-form>
+             <!-- warning-bg -->
+        <div class="col-sm-12 p-2 px-3 form-label d-flex flex-row justify-content-between row">
+            <div class="col-md-6" *ngFor="let note of specialNotes">
+                <span class="sub-key"> {{note.key}}</span> <span class="fs-normal"  [ngClass]="note.class ? note.class : 'sub-value'"> {{note.value}}</span>
+            </div>
+        </div>
+    </div>
+    <p *ngIf="note" class="mt-1 note" [ngClass]="note_class ? note_class : ''" [innerHTML]="note"></p>
+
+
+    <div class="d-flex flex-row justify-content-end align-items-center mb-1" *ngIf="confirmText ">
+        <button class="btn-label mx-3 btn-primary" (click)="emitStatus()">{{confirmText}}</button>
+        <button type="button" class="btn cancel-btn btn-secondary" (click)="resetModal()">{{cancelText}}</button>
+    </div>
+</div>

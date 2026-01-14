@@ -1,0 +1,175 @@
+<div class="form-section">
+    <div class="form-heading my-1 mx-3" [routerLink]="redirecturl"> <i *ngIf="isBackIcon"
+            class="bi bi-arrow-left me-3 icon"></i>
+        {{title}}</div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="row mt-4">
+            <ng-container *ngFor="let field of formFields">
+                <div *ngIf="field.isVisible"
+                    [ngClass]="class ? class : formFields ? formFields.length>4 ? 'col-md-6' : 'col-md-12' : 'col-md-12'">
+
+                    <!-- Input field -->
+                    <div class="col" *ngIf="field.fieldType == 'input'">
+                        <label [for]="field.id" class="form-label">{{field.label || field.placeholder}}
+                            <span *ngIf="field?.isRequired" class="text-danger">*</span>
+                        </label>
+                        <div class="mb-3 input-group">
+                            <input [formControlName]="field.id" [type]="field.type" class="form-control" [id]="field.id"
+                                [required]="field?.isRequired"
+                                (input)="(field.id == 'pinCode' || field.id == 'pincode') && getPinCodeDetails($event)"
+                                [readOnly]="field.id == 'city' && validPinCode || field.isReadOnly"
+                                [min]="field.type == 'number' && field.minValue"
+                                [ngStyle]="{'background-color':field.isReadOnly ? 'var(--bg-tertiary)' : 'var(--bg-tertiary)'}"
+                                [placeholder]="field.placeholder || field.label">
+
+                            <span class="input-group-text" *ngIf="field.id === 'password'">
+                                <i class="bi" [ngClass]="showPassword ? 'bi-eye' : 'bi-eye-slash'"
+                                    (click)="togglePasswordVisibility('password')"></i>
+                            </span>
+
+                            <span class="input-group-text" *ngIf="field.id === 'confirmPassword'">
+                                <i class="bi" [ngClass]="showConfirmPassword ? 'bi-eye' : 'bi-eye-slash'"
+                                    (click)="togglePasswordVisibility('confirmPassword')"></i>
+                            </span>
+
+                        </div>
+
+                        <div *ngIf="form.get(field.id)?.invalid && (form.get(field.id)?.touched || form.get(field.id)?.dirty)"
+                            class="text-danger mb-1" style= "margin-top: -1rem;">
+
+                            <small *ngIf="form.get(field.id)?.errors?.['required']">{{field.placeholder}} is
+                                required
+                            </small>
+
+                            <small *ngIf="field.id === 'mobile' && form.get(field.id)?.errors?.['minlength']">
+                                Please enter a valid mobile number
+                            </small>
+                            <small *ngIf="form.get(field.id)?.errors?.['maxlength']">
+                                Limit exceeded. Please adjust your input.
+                            </small>
+
+                            <span *ngIf="field.type === 'password'">
+                                <small *ngIf="form.get(field.id)?.errors?.['minlength']"> Minimum length is
+                                    {{field.minLength || 6}}</small>
+                                <small *ngIf="!form.get(field.id)?.errors?.['minlength'] && form.get(field.id)?.errors?.['pattern']">
+                                    Password must be at least {{field.minLength || 6}} characters long and include both letters and numbers.
+                                </small>
+                            </span>
+
+                            <small *ngIf="field.type !== 'password' && form.get(field.id)?.errors?.['pattern']">
+                                Please enter a valid {{field.placeholder}}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Date Field -->
+                    <div class="col" *ngIf="field.fieldType == 'date'">
+                        <label [for]="field.id" class="form-label">{{field.label || field.placeholder}}
+                            <span *ngIf="field?.isRequired" class="text-danger">*</span>
+                        </label>
+                        <div class="mb-3 input-group">
+                            <input [type]="field.type" class="form-control" [formControlName]="field.id"
+                                [id]="field.id">
+                        </div>
+                        <div *ngIf="form.get(field.id)?.invalid && form.get(field.id)?.touched"
+                            class="text-danger mb-1">
+                            <small *ngIf="form.get(field.id)?.errors?.['required']">{{field.placeholder}} is
+                                required
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Text area -->
+                    <div class="col" *ngIf="field.fieldType == 'textarea'">
+                        <label [for]="field.id" class="form-label">{{field.label || field.placeholder}}<span
+                                *ngIf="field?.isRequired" class="text-danger">*</span></label>
+                        <div class="mb-3">
+                            <textarea class="form-control textarea-section" [ngClass]="field.class" [id]="field.id" [formControlName]="field.id"
+                                [readonly]="field.isReadOnly"
+                                [ngStyle]="{'background-color':field.isReadOnly ? 'var(--bg-tertiary)' : 'var(--bg-tertiary)'}"
+                                [placeholder]="field.placeholder"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Select field -->
+                    <div class="col" class="mb-4" *ngIf="field.fieldType == 'select'">
+                        <label [for]="field.id" class="form-label">{{field.placeholder}}
+                            <span *ngIf="field?.isRequired" class="text-danger">*</span>
+                        </label>
+                        <app-select-search *ngIf="field.isSearch" [field]="field"
+                            (emitSelectedValue)="patchSelectedValue($event,field)" [disabled]="field.isReadOnly">
+                        </app-select-search>
+
+                        <select *ngIf="!field.isSearch" class="form-select input" [id]="field.id"
+                            [formControlName]="field.id" [class.disabled-select]="field.isReadOnly">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Search Here..."
+                                    aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            <option value="" disabled selected>Select {{field.placeholder.toLowerCase()}}</option>
+                            <option *ngFor="let option of field.dropdownData" [value]="option._id"
+                                [disabled]="(field.id == 'state' || field.id == 'country') && validPinCode">
+                                {{option.value || option.name}}
+                            </option>
+                        </select>
+                        <div *ngIf="form.get(field.id)?.invalid && form.get(field.id)?.touched" class="text-danger">
+                            <small *ngIf="form.get(field.id)?.errors?.['required']">{{field.placeholder}} is
+                                required</small>
+                        </div>
+                    </div>
+
+                    <!-- Color Field -->
+                    <div class="col" *ngIf="field.fieldType == 'color'">
+                        <div class="mb-3 mt-4 row">
+                            <div for="exampleFormControlInput1" class="col-md-3 form-label my-3">Choose Color</div>
+                            <span class="col-md-9 d-flex flex-row flex-wrap">
+                                <span class="col-md-1 colors mx-2 my-2" *ngFor="let color of field.colors"
+                                    [ngStyle]="{'background-color':color}"
+                                    (click)="form.patchValue({color:color})"></span>
+                                <div class="col-md-3 mt-3 d-flex flex-row justify-content-between">
+                                    <span class="selected-color"
+                                        [ngStyle]="form.value.color?{'background-color':form.value.color}:{'background-color':field.colors[2].color}"></span>
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div
+                                    class="col-md-7 mt-3 d-flex flex-row align-items-center custom-color-btn p-2 color-picker">
+                                    <label for="exampleColorInput" class="form-label mb-0 me-2">Pick Custom
+                                        Color</label>
+                                    <input type="color"
+                                        class="form-control border-0 p-0 mt-1 form-control-color color-input"
+                                        id="customInputColor" title="Choose your color"
+                                        (change)="changeCustomColor($event)">
+                                </div>
+                            </span>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </ng-container>
+            <ng-container class="display-inline" *ngIf="specialNotes && specialNotes.length > 0">
+                <div class="plan-summary-inline plan-font mb-2">
+                    <ng-container *ngFor="let note of specialNotes; let last = last">
+                        <span class="label">{{note.key}}</span>
+                        <span class="value">{{note.value | number:'1.0-2' }}</span>
+                        <span class="divider" *ngIf="!last">|</span>
+                    </ng-container>
+                </div>
+            </ng-container>
+            <ng-container *ngFor="let field of formFields">
+                <!-- Button Field -->
+                <div class="d-flex flex-row justify-content-end align-items-center mt-3 mb-1 gap-3"
+                    *ngIf="field.fieldType == 'button'">
+                    <button *ngFor="let button of field.button" [type]="button == 'Submit' ? 'submit' : 'button'"
+                        (click)="handleButton(button)" [ngClass]="button == 'Submit' ? 'btn-label' : 'btn cancel-btn'">
+                        {{button}}
+                    </button>
+                </div>
+            </ng-container>
+        </div>
+    </form>
+</div>

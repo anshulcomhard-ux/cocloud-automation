@@ -1,0 +1,97 @@
+<form class="d-flex flex-column" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <div class="input-group mt-2">
+        <input type="email" class="form-control" placeholder="Enter email" aria-label="Email"
+            aria-describedby="basic-addon1" formControlName="email" [readonly]="isForgotPassword" />
+    </div>
+    <div *ngIf="authForm.controls['email'].invalid && authForm.controls['email'].touched">
+        <div class="error-message" *ngIf="authForm.controls['email'].errors?.['required']">
+            Email is required
+        </div>
+        <div class="error-message" *ngIf="authForm.controls['email'].errors?.['email']">
+            Please enter valid email id
+        </div>
+    </div>
+    <div *ngIf="formType == 'forgot-password' && isForgotPassword">
+        <div class="input-group my-2">
+            <input type="text" class="form-control" placeholder="Enter OTP" aria-label="OTP"
+                aria-describedby="basic-addon1" formControlName="otp" />
+        </div>
+        <div *ngIf="authForm.controls['otp'].invalid && authForm.controls['otp'].touched">
+            <div class="error-message" *ngIf="authForm.controls['otp'].errors?.['required']">
+                OTP is required
+            </div>
+            <div class="error-message"
+                *ngIf="authForm.controls['otp'].errors?.['minlength'] || authForm.controls['otp'].errors?.['maxlength']">
+                Please enter valid 6 digit OTP
+
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="formType != 'forgot-password' || isForgotPassword">
+        <div class="input-group mt-2">
+            <input type="password" class="form-control" placeholder="Enter Password" aria-label="Password"
+                aria-describedby="basic-addon1" formControlName="password" id="password" />
+            <span class="input-group-text password-icon">
+                <i class="bi" [ngClass]="showPassword ? 'bi-eye' : 'bi-eye-slash'"
+                    (click)="togglePasswordVisibility('password')"></i>
+            </span>
+
+        </div>
+        <div *ngIf="authForm.controls['password'].invalid && authForm.controls['password'].touched">
+            <div class="error-message" *ngIf="authForm.controls['password'].errors?.['required']">
+                Password is required
+            </div>
+            <div class="error-message"
+                *ngIf="formType==='login' && authForm.controls['password'].errors?.['minlength']">
+                Password must be at least 6 characters long. </div>
+            <div class="error-message"
+                *ngIf="formType==='forgot-password' && authForm.controls['password'].errors?.['minlength']">
+                Password must be at least 8 characters long. </div>
+            <div class="error-message"
+                *ngIf="formType==='forgot-password' && authForm.controls['password'].errors?.['pattern'] && !authForm.controls['password'].errors?.['minlength']">
+                Password must be at least 8 characters long and include both letters and numbers. </div>
+        </div>
+    </div>
+    <div *ngIf="formType == 'forgot-password' && isForgotPassword">
+        <div class="input-group mt-2">
+            <input type="password" class="form-control" placeholder="Re-enter Password" aria-label="Password"
+                aria-describedby="basic-addon1" formControlName="reEnterPassword" id="confirmPassword" />
+
+            <span class="input-group-text  password-icon">
+                <i class="bi" [ngClass]="showConfirmPassword ? 'bi-eye' : 'bi-eye-slash'"
+                    (click)="togglePasswordVisibility('confirmPassword')"></i>
+            </span>
+        </div>
+        <div *ngIf="authForm.controls['reEnterPassword'].invalid && authForm.controls['reEnterPassword'].touched">
+            <div class="error-message" *ngIf="authForm.controls['reEnterPassword'].errors?.['required']">
+                Re-enter Password is required
+            </div>
+            <div class="error-message" *ngIf="authForm.controls['reEnterPassword'].errors?.['minlength']">
+                Password is min 8 digit </div>
+        </div>
+    </div>
+
+    <div class="forgot-btn d-flex flex-row justify-content-end my-1" *ngIf="formType == 'login'">
+        <a class="forgot-btn" href="/forgot-password"> Forgot Password ?</a>
+    </div>
+
+    <div *ngIf="formType == 'forgot-password' && isForgotPassword"
+        class="forgot-btn d-flex flex-row justify-content-end my-1">
+
+        <button type="button" (click)="resendOTP()" class="become-partner resend-otp mx-2" [disabled]="remainingTime !== 0">
+            Resend OTP
+        </button>
+
+        <small class="text-secondary">
+            {{ remainingTime < 10 ? '00:0' + remainingTime : '00:' + remainingTime }} </small>
+    </div>
+
+    <button class=" my-2 btn-primary">{{formType == 'login' ? 'Sign in' : !isForgotPassword ? "Request OTP" : "Change Password"
+        }}</button>
+
+    <div class="d-flex flex-row justify-content-center my-1" *ngIf="formType == 'forgot-password'">
+        <span class="text-muted mx-1"> Remembered your password? </span>
+        <a class="become-partner" href="/login"> Login</a>
+    </div>
+</form>

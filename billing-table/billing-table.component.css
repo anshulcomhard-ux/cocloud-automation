@@ -1,0 +1,347 @@
+.table-main-container {
+  padding: 1rem;
+  width: 100%;
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  color: var(--text-primary);
+}
+
+.table-container {
+  margin-top: 1rem;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 70vh;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-primary);
+}
+
+.detailed-section {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+.table-bordered {
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  overflow: visible;
+  min-width: 800px;
+  margin-bottom: 0;
+  background-color: var(--bg-primary);
+}
+
+.table-bordered td {
+  color: var(--text-primary);
+  border-color: var(--border-color);
+  background: var(--bg-primary);
+}
+
+.table-header {
+  background-color: var(--bg-tertiary);
+  font-weight: 600;
+  color: var(--text-primary);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-header th {
+  border-top: none;
+  white-space: nowrap;
+  background-color: var(--color-primary);
+  color: white;
+  height: 57px;
+  vertical-align: middle;
+  border: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.table-header1 {
+  background-color: var(--bg-tertiary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  position: sticky;
+  top: 57px;
+  z-index: 9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.table-header1 th {
+  border-top: none;
+  white-space: nowrap;
+  min-width: 100px;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 1rem;
+  border-color: var(--border-color);
+}
+
+.dropdown-header {
+  width: 16rem;
+  max-height: 250px;
+  min-width: 200px;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem 0;
+  background-color: var(--bg-primary);
+}
+
+.dropdown-menu {
+  background-color: var(--bg-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.dropdown-menu li {
+  color: var(--text-primary);
+}
+
+.dropdown-menu li label {
+  color: var(--text-primary);
+}
+
+.dropdown-header-header {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.dropdown-header-menu input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  margin-right: 0.5rem !important;
+  accent-color: var(--color-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 3px;
+}
+
+.dropdown-header-menu input[type="checkbox"]:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.dropdown-header-menu li span {
+  font-size: 0.9rem;
+  width: 100px;
+  color: var(--text-primary);
+  user-select: none;
+}
+
+.odd-row {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.even-row {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+tr.hide-table-padding td {
+  padding: 0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+  text-align: center;
+}
+
+.expand-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+}
+
+.accordion-toggle .expand-button::after {
+  position: absolute;
+  left: 0.3rem;
+  top: 50%;
+  transform: translate(0, -50%);
+  content: '−';
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+
+.collapse-btn {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.collapse-btn:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+.add-btn {
+  margin-left: 147px;
+}
+
+.total-data-info {
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.records {
+  font-size: 0.9rem;
+  font-family: 'Nunito', sans-serif;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.commom-color {
+  color: var(--color-primary);
+}
+
+.label {
+  font-size: 1rem;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.card .label {
+  white-space: normal;
+  max-width: none;
+}
+
+/* No Data State */
+.no-data {
+  padding: 3rem 1rem;
+  color: var(--text-tertiary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-color: var(--bg-primary);
+}
+
+
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-primary) !important;
+  position: relative;
+  z-index: 1;
+  color: var(--text-primary);
+}
+
+.expanded-row-container {
+  position: relative;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.card .table {
+  color: var(--text-primary);
+}
+
+.card .table td {
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.card .table {
+  margin-bottom: 0;
+}
+
+.card .table-borderless {
+  position: relative;
+  z-index: 1;
+}
+
+.Credit {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.Debit {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+/* Icons */
+.bi-arrow-right-circle,
+.bi-arrow-down-circle {
+  color: var(--color-primary);
+  transition: color 0.2s ease;
+}
+
+.bi-arrow-down-circle.text-danger {
+  color: var(--color-error) !important;
+}
+
+/* Material Paginator */
+::ng-deep .paginator {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+::ng-deep .paginator .mat-mdc-paginator-container {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+::ng-deep .paginator .mat-mdc-paginator-page-size-label,
+::ng-deep .paginator .mat-mdc-paginator-range-label {
+  color: var(--text-primary);
+}
+
+::ng-deep .paginator .mat-mdc-icon-button {
+  color: var(--text-primary);
+}
+
+::ng-deep .paginator .mat-mdc-icon-button:hover {
+  background-color: var(--bg-hover);
+}
+
+::ng-deep .paginator .mat-mdc-select-value,
+::ng-deep .paginator .mat-mdc-select-arrow {
+  color: var(--text-primary);
+}
+
+/* Dark Mode - Pagination Text White */
+[data-theme="dark"] ::ng-deep .paginator {
+  background-color: var(--bg-primary) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] ::ng-deep .paginator .mat-mdc-paginator-container {
+  background-color: var(--bg-primary) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] ::ng-deep .paginator .mat-mdc-paginator-page-size-label,
+[data-theme="dark"] ::ng-deep .paginator .mat-mdc-paginator-range-label {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] ::ng-deep .paginator .mat-mdc-icon-button {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] ::ng-deep .paginator .mat-mdc-icon-button mat-icon,
+[data-theme="dark"] ::ng-deep .paginator .mat-mdc-icon-button svg,
+[data-theme="dark"] ::ng-deep .paginator .mat-mdc-icon-button svg path {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] ::ng-deep .paginator .mat-mdc-select-value,
+[data-theme="dark"] ::ng-deep .paginator .mat-mdc-select-arrow {
+  color: #ffffff !important;
+}

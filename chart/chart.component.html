@@ -1,0 +1,39 @@
+<div *ngIf="chartName === 'risky'; else otherCharts">
+    <div id="riskyCustomerChart" class="d-flex justify-content-center align-items-center">
+        <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+            [(update)]="updateFromInput"></highcharts-chart>
+    </div>
+    <div class="reseller">
+        <p class="text-center mb-0 numbers">
+            <b>{{ chartData?.totalAmount | pricePipe }}</b>
+        </p>
+        <p class="text-center fs-6 ms-2">Amount</p>
+    </div>
+</div>
+
+<ng-template #otherCharts>
+    <div *ngIf="chartName === 'newPaid'; else trialChart">
+        <div id="paidSubTrendChart" class="d-flex justify-content-center align-items-center">
+            <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions" [(update)]="updateFromInput"
+                class="other-charts"></highcharts-chart>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #trialChart>
+    <div *ngIf="chartName === 'trial'; else mrrReportChart">
+        <div id="trialReportChart" class="d-flex justify-content-center align-items-center">
+            <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions" [(update)]="updateFromInput"
+                class="trial-chart"></highcharts-chart>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #mrrReportChart>
+    <div *ngIf="chartName === 'mrr-report'">
+        <div id="mrrReportChart" class="d-flex justify-content-center align-items-center">
+            <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions" [(update)]="updateFromInput"
+                class="mrr-report-chart"></highcharts-chart>
+        </div>
+    </div>
+</ng-template>

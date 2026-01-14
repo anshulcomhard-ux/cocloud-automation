@@ -1,0 +1,17 @@
+<mat-form-field style="width: 100%;">
+    <mat-label>{{data?.placeholder || 'Custom Date'}}</mat-label>
+
+    <mat-date-range-input [rangePicker]="picker" [formGroup]="dateRange" class="date-range-input">
+        <input matStartDate placeholder="From" formControlName="startDate" (keyup.enter)="emitDates()">
+        <input matEndDate placeholder="To" formControlName="endDate" (keyup.enter)="emitDates()">
+    </mat-date-range-input>
+
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+
+    <mat-date-range-picker #picker>
+        <mat-date-range-picker-actions>
+            <button mat-button matDateRangePickerCancel>Cancel</button>
+            <button (click)="emitDates()" mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+        </mat-date-range-picker-actions>
+    </mat-date-range-picker>
+</mat-form-field>
