@@ -34,7 +34,8 @@ jobs:
         run: npx playwright test --list
 
       - name: Run Playwright tests
-        run: npx playwright test --grep-invert "skip" --max-failures=1 --workers=1 --timeout=300000
+        run: npx playwright test --workers=1 --timeout=300000
+
 
       - name: Upload Playwright report
         if: always()
