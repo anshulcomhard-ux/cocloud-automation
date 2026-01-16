@@ -1,0 +1,76 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Service Request → Raise Service Request page
+# Click on Service Request menu item to expand dropdown
+- tapOn:
+    text: "Service Request"
+
+
+# Click on Raise Service Request submenu item
+- tapOn:
+    text: " Raise Request "
+
+# Verify Raise Service Request page is loaded
+- assertVisible:
+    text: "Raise Service Request "
+
+# Verify "My Service Requests" section is visible
+- assertVisible:
+    text: "My Service Requests:"
+
+# Verify tabs are visible
+
+- assertVisible: 
+    text: " All Requests "
+
+- assertVisible:
+    text: " Raise Service Request"
+
+# Verify all three category options are visible
+- assertVisible:
+    text: "Technical Issue"
+
+- assertVisible:
+    text: "Billing & Payment"
+
+- assertVisible:
+    text: "Feedback or Feature Request"
+
+# Verify category descriptions are visible
+- assertVisible:
+    text: "Link down & other network issues"
+
+- assertVisible:
+    text: "Bill disputes & Payment related issue"
+
+- assertVisible:
+    text: "Your Input and Suggestions"

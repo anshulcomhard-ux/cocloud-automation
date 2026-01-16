@@ -1,9 +1,0 @@
-<mat-form-field appearance="fill">
-    <mat-label>{{ componentUsed === 'license-details' ? 'Expiry' : 'Choose a month and year' }}</mat-label>
-    <input matInput [matDatepicker]="picker" [formControl]="date" (dateChange)="setMonthAndYear($event.value, picker)"
-        placeholder="MM/YYYY" (blur)="onManualChange()" (keyup.enter)="onManualChange()">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker startView="multi-year" (monthSelected)="setMonthAndYear($event, picker)"
-        panelClass="month-picker">
-    </mat-datepicker>
-</mat-form-field>

@@ -1,0 +1,16 @@
+Test Case Name
+View Add New Subscription Page - Initial Load
+Select Partner from Dropdown
+Select Customer from Dropdown
+Select Product from Dropdown
+Select Plan from Dropdown
+Enter Quantity - Valid Value
+Select End Date for Paid Plan
+Select Sales Person from Dropdown
+Submit Form - All Required Fields Filled
+Submit Form Without Selecting Customer
+Submit Form Without Selecting Product
+Submit Form Without Selecting Plan
+Enter Quantity - Zero Value
+Submit Form Without Selecting Sales Person
+Click Back Icon - Navigate to Subscriptions Page

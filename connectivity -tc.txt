@@ -1,0 +1,39 @@
+Write Playwright automation test cases for the "Connectivity Test" page.
+
+Preconditions:
+- User is logged in successfully
+- User has access to Connectivity Test module
+
+Test Scenarios:
+
+========================
+VERIFY PAGE LOAD
+========================
+1. Navigate to the Connectivity Test page from the left sidebar.
+2. Verify the page heading "Connectivity Test" is visible.
+3. Verify sub-heading text "Test your connection performance" is displayed.
+4. Verify all three test cards are visible:
+   - Speed Test
+   - Server Ping
+   - Ping Drop Test
+
+========================
+VERIFY BUTTON VISIBILITY
+========================
+1. Verify "Start Test" button is visible under Speed Test.
+2. Verify "Start Test" button is visible under Server Ping.
+3. Verify "Start" button is visible under Ping Drop Test.
+4. Ensure all buttons are enabled and clickable.
+
+========================
+VERIFY BUTTON CLICK ACTION
+========================
+1. Click on "Start Test" button under Speed Test.
+   - Verify test initiation (loader / progress / API call triggered).
+2. Click on "Start Test" button under Server Ping.
+   - Verify ping test is initiated.
+3. Click on "Start" button under Ping Drop Test.
+   - Verify ping drop test starts successfully.
+
+========================
+

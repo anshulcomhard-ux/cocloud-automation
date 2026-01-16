@@ -1,0 +1,71 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible: "Dashboard and Statistics"
+
+# Verify widgets are visible before applying filter
+- assertVisible: "Total Paid Subscriptions:"
+
+- assertVisible: " New Subscriptions Activations:"
+
+- assertVisible: "Subscriptions Summary"
+
+# ----------------------------
+# Apply Extreme Date Range Filter (very large range)
+# ----------------------------
+
+# Open date range picker
+- tapOn:
+    text: "Custom Date"
+
+# Open calendar/date picker
+- tapOn:
+    point: 69%,27%
+- tapOn:
+    point: 50%,32%
+- tapOn: " 2022 "
+- tapOn: " JUL "
+- tapOn: " 12 "
+- tapOn: Apply
+
+
+# ----------------------------
+# Validation: Performance or Graceful Rejection
+# ----------------------------
+
+# Option 1: Performance is acceptable
+# Verify dashboard is still responsive
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Verify widgets are still visible (may take longer to load)
+- assertVisible:
+    text: "Subscriptions Summary"
+
+- assertVisible: " Total Renewals "
+- assertVisible: "0"

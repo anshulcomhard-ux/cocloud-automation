@@ -1,0 +1,30 @@
+write Playwright automation test cases for the "Download Setup" page.
+
+Preconditions:
+- User is logged in
+- User has access to Download Setup module
+
+Test Scenarios:
+
+========================
+VERIFY PAGE LOAD
+========================
+1. Navigate to the Download Setup page from the left sidebar.
+2. Verify the page title "Download Setup" is visible.
+3. Verify section heading "Download Setup Link" is displayed.
+4. Verify all download cards/links are visible:
+   - CoCloud-Printer-Client.exe
+   - CoCloud-RemoteAppClient.exe
+   - CoCloud-Client-File-Setup
+5. Ensure no console errors or page load failures.
+
+========================
+VERIFY DOWNLOAD LINKS ARE CLICKABLE
+========================
+For each download link:
+
+1. Click on the download link.
+2. Verify the click action is successful.
+3. Validate that file download is triggered.
+4. Verify the downloaded file name matches the expected file.
+5. Ensure no error toast or alert is displayed.

@@ -1,0 +1,26 @@
+url: https://dev.partner.cocloud.in/
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Try to tap Sign in button without entering any fields
+# This should trigger client-side validation
+- tapOn:
+    text: "Sign in"
+
+
+
+# Verify still on login page (no API call made, no navigation)
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Verify Sign in button is still visible
+- assertVisible:
+    text: "Sign in"
+
+# Verify dashboard is NOT accessible (no API call, no token)
+- assertNotVisible:
+    text: "Dashboard"
+

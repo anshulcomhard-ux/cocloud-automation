@@ -1,0 +1,107 @@
+verify successfully audit logs page load
+//click on security and logs dropdown
+//click on audit logs option
+//navigate to audit logs page
+//verify page heading text- extract audit logs text 
+
+
+//verify name search field
+//click on security and logs dropdown
+//click on audit logs option
+//navigate to audit logs page
+//click search here 
+//retrieve name value from table 
+//enter name value in name field 
+//click search
+//verify in table if data available else this text shown -No data found.
+//reset form -- all data will shown if available 
+
+//verify email search field
+//click on security and logs dropdown
+//click on audit logs option
+//navigate to audit logs page
+//click search here 
+//retrieve email value from table 
+//enter email value in email field 
+//click search
+//verify in table if data available else this text shown -No data found.
+//reset form -- all data will shown if available 
+
+
+//verify URL Endpoint search field
+//click on security and logs dropdown
+//click on audit logs option
+//navigate to audit logs page
+//click search here 
+//retrieve URL endpoint value from table 
+//enter  value in URL endpoint field 
+//click search
+//retrieve URL Endpoint value then search in URL Endpoint field 
+//verify in table if data available else this text shown -No data found.
+//reset form -- all data will shown if available 
+
+
+//verify API response search field
+//click on security and logs dropdown
+//click on audit logs option
+//navigate to audit logs page
+//click search here 
+//retrieve API response value from table 
+//enter  value in API response field 
+//click search
+//verify in table if data available else this text shown -No data found.
+//reset form -- all data will shown if available
+
+//verify task type search field
+//click on security and logs dropdown
+//click on audit logs option
+//navigate to audit logs page
+//click search here 
+//retrieve task type value from table 
+//enter  value in task type field 
+//click search
+//verify in table if data available else this text shown -No data found.
+//reset form -- all data will shown if available
+
+//verify select range search field
+//click on security and logs dropdown
+//click on audit logs option
+//navigate to audit logs page
+//click search here 
+//click select range 
+//select start and end date from calendar
+//click search
+//verify in table column date & time if data available else this text shown -No data found.
+//reset form -- all data will shown if available
+
+//verify empty fields search
+//click on security and logs dropdown
+//click on audit logs option
+//navigate to audit logs page
+//click search here 
+//click search 
+//verify  table data if data available else this text shown -No data found.
+
+//verify select headers 
+//click on security and logs dropdown
+//click on audit logs option
+//navigate to audit logs page
+//check table columns
+//click select headers button 
+//check all header options are selected
+//unselect all header options 
+//verify no column is showing
+//click on select header button 
+//select all options 
+//verify all selected header options shown in table columns 
+
+//to verify pagination feature on audit logs
+1. Verify default "Items per page" value is 20.
+2. Verify the text "Showing 1 to 20 of X records" is displayed correctly.
+3. Click the "Next" pagination button and verify:
+   - Page number increments
+   - First row ID on page 2 is different from page 1
+4. Click the "Previous" button and verify navigation back to page 1.
+5. Change "Items per page" from 20 to 50 and verify:
+   - Table shows 50 rows
+   - Pagination text updates correctly

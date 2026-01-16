@@ -1,0 +1,69 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+
+# Precondition: User is already logged in and on Dashboard
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Verify widgets are visible before applying filter
+- assertVisible: "Total Paid Subscriptions:"
+
+- assertVisible: " New Subscriptions Activations:"
+
+- assertVisible: "Subscriptions Summary"
+
+# ----------------------------
+# Apply Date Range Filter
+# ----------------------------
+
+# Open date range picker
+- tapOn:
+    text: "Custom Date"
+- tapOn:
+    point: 69%,27%
+- tapOn: " 2 "
+- tapOn: " 25 "
+- tapOn: Apply
+
+# ----------------------------
+# Validation: Widgets updated
+# ----------------------------
+
+# Dashboard widgets should still be visible
+- assertVisible: "Total Paid Subscriptions:"
+
+- assertVisible: " New Subscriptions Activations:"
+
+# Subscriptions Summary table should refresh
+- assertVisible: " Total Renewals "
+
+# Ensure no error or empty state
+- assertNotVisible:
+    text: "No data found"
+

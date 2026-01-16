@@ -1,0 +1,61 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Subscriptions page
+# Click on Subscriptions menu item in sidebar
+- tapOn: Subscriptions
+    
+
+# Verify Subscriptions page is loaded
+- assertVisible:
+    text: "Subscriptions"
+
+- tapOn: SUB-P013127
+# Verify Next Billing Date is visible
+- assertVisible: "Next Billing Date "
+
+- tapOn: "Move To Paid Plan "
+
+
+- tapOn: Select product
+- tapOn:
+    point: 49%,41%
+
+- tapOn: Select plan name
+
+- tapOn: tally on cloud -2 years
+
+
+- tapOn: Select end date
+
+- tapOn: 05/12/2027
+
+- tapOn: Submit

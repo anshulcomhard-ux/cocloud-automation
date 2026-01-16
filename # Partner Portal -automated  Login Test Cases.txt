@@ -1,0 +1,148 @@
+# Partner Portal - Login Test Cases (15 Basic Test Cases for Automation)
+
+## Test Cases List
+
+### Positive Test Cases
+
+1. **P01 - Valid Login with Correct Credentials**
+   - **Description**: Verify successful login with valid email and password
+   - **Steps**: 
+     - Navigate to partner portal login page
+     - Enter valid email address
+     - Enter valid password
+     - Click Sign In button
+   - **Expected Result**: User should be redirected to dashboard, login form should disappear, dashboard title should be visible
+
+2. **P02 - Login with Email in Different Cases (Uppercase/Lowercase)**
+   - **Description**: Verify login works with email in different case formats
+   - **Steps**: 
+     - Enter email in uppercase (e.g., CONTACT@COMHARD.CO.IN)
+     - Enter valid password
+     - Click Sign In
+   - **Expected Result**: Login should be successful (email should be case-insensitive)
+
+3. **P03 - Login with Leading/Trailing Spaces in Email**
+   - **Description**: Verify login handles email with leading/trailing spaces
+   - **Steps**: 
+     - Enter email with leading/trailing spaces (e.g., " contact@comhard.co.in ")
+     - Enter valid password
+     - Click Sign In
+   - **Expected Result**: Login should be successful (spaces should be trimmed)
+
+4. **P04 - Verify Dashboard Elements After Login**
+   - **Description**: Verify all dashboard elements are visible after successful login
+   - **Steps**: 
+     - Perform valid login
+     - Wait for dashboard to load
+   - **Expected Result**: Dashboard title, sidebar menu, and main content area should be visible
+
+5. **P05 - Verify URL Changes After Successful Login**
+   - **Description**: Verify URL redirects correctly after login
+   - **Steps**: 
+     - Perform valid login
+     - Check current URL
+   - **Expected Result**: URL should not contain '/login', should redirect to dashboard URL
+
+### Negative Test Cases
+
+6. **N01 - Login with Invalid Email Format**
+   - **Description**: Verify error message when email format is invalid
+   - **Steps**: 
+     - Enter invalid email (e.g., "invalidemail", "test@", "@domain.com")
+     - Enter any password
+     - Click Sign In
+   - **Expected Result**: Validation error message should appear, login should not proceed
+
+7. **N02 - Login with Empty Email Field**
+   - **Description**: Verify error message when email field is empty
+   - **Steps**: 
+     - Leave email field empty
+     - Enter password
+     - Click Sign In
+   - **Expected Result**: Validation error message should appear indicating email is required
+
+8. **N03 - Login with Empty Password Field**
+   - **Description**: Verify error message when password field is empty
+   - **Steps**: 
+     - Enter valid email
+     - Leave password field empty
+     - Click Sign In
+   - **Expected Result**: Validation error message should appear indicating password is required
+
+9. **N04 - Login with Empty Email and Password Fields**
+   - **Description**: Verify error messages when both fields are empty
+   - **Steps**: 
+     - Leave both email and password fields empty
+     - Click Sign In
+   - **Expected Result**: Validation error messages should appear for both fields
+
+10. **N05 - Login with Invalid Password**
+    - **Description**: Verify error message when password is incorrect
+    - **Steps**: 
+      - Enter valid email
+      - Enter incorrect password
+      - Click Sign In
+    - **Expected Result**: Error toast/message should appear indicating invalid credentials, login should not proceed
+
+11. **N06 - Login with Non-Existent Email**
+    - **Description**: Verify error message when email doesn't exist in system
+    - **Steps**: 
+      - Enter non-existent email (e.g., "nonexistent@example.com")
+      - Enter any password
+      - Click Sign In
+    - **Expected Result**: Error message should appear indicating invalid credentials or user not found
+
+12. **N07 - Login with Correct Email but Wrong Password (Multiple Attempts)**
+    - **Description**: Verify system handles multiple failed login attempts
+    - **Steps**: 
+      - Enter valid email
+      - Enter wrong password
+      - Click Sign In (repeat 3-5 times)
+    - **Expected Result**: After multiple attempts, account should be locked or rate limiting message should appear
+
+### UI/UX Test Cases
+
+13. **UI01 - Verify Login Form Elements Visibility**
+    - **Description**: Verify all login form elements are visible and properly displayed
+    - **Steps**: 
+      - Navigate to login page
+      - Check all form elements
+    - **Expected Result**: Email input, password input, Sign In button, and Forgot Password link should be visible
+
+14. **UI02 - Verify Password Field Type (Should be Password Type)**
+    - **Description**: Verify password field masks the input
+    - **Steps**: 
+      - Enter password in password field
+      - Check if characters are masked
+    - **Expected Result**: Password should be displayed as dots/asterisks, not plain text
+
+15. **UI03 - Verify Forgot Password Link Navigation**
+    - **Description**: Verify clicking Forgot Password link navigates to reset password page
+    - **Steps**: 
+      - Click on "Forgot Password" or "Forgot Password?" link
+      - Verify page navigation
+    - **Expected Result**: Should navigate to reset password page, URL should contain 'forgot-password' or 'reset-password'
+
+---
+
+## Test Case Summary
+
+- **Total Test Cases**: 15
+- **Positive Test Cases**: 5 (P01-P05)
+- **Negative Test Cases**: 7 (N01-N07)
+- **UI/UX Test Cases**: 3 (UI01-UI03)
+
+## Priority Classification
+
+- **High Priority**: P01, N01, N02, N03, N04, N05, N06, UI01
+- **Medium Priority**: P02, P03, P04, P05, N07, UI02
+- **Low Priority**: UI03
+
+## Notes
+
+- All test cases should include proper wait times for page loads and element visibility
+- Error messages should be verified for correct text content
+- Screenshots should be captured for failed test cases
+- Test data should use environment variables for credentials
+- Consider implementing retry logic for flaky network-related tests
+

@@ -1,0 +1,31 @@
+Write Playwright automation test cases to verify the "Upload File" modal functionality.
+
+Requirements:
+1. Verify the Upload File modal opens successfully.
+2. Verify modal title "Upload File" is displayed.
+3. Verify close (X) icon closes the modal.
+4. Verify Upload options are visible:
+   - Upload Files
+   - Upload Folder
+   - Upload Zip
+5. Verify drag-and-drop upload area is visible with instructional text.
+6. Verify file size and count rules are displayed correctly:
+   - Max 10 files per folder
+   - Max 1GB per file
+   - Zip files always allowed
+7. Verify "Clear" button resets selected files.
+8. Verify "Cancel" button closes the modal without uploading.
+9. Verify "Confirm Upload" button is disabled until a file is selected.
+10. Upload a valid file and verify:
+    - File name appears in the list
+    - Confirm Upload button becomes enabled
+11. Click Confirm Upload and verify upload success message or API response (200).
+12. Upload invalid file (exceeding size or count) and verify proper error message.
+13. Verify drag-and-drop upload works as expected.
+14. Verify multiple file selection is handled correctly.
+15. Ensure modal closes after successful upload.
+
+Use stable, role-based or text-based locators.
+Add proper waits and assertions.
+Avoid using index-based selectors.
+Provide clean, reusable Playwright code.

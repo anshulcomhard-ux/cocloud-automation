@@ -1,0 +1,45 @@
+Write Playwright automation test cases for the "Account Details" page with the following scenarios:
+
+Precondition:
+- User is logged in successfully
+- Navigate to Account Details page from sidebar
+
+Test Cases:
+
+1. Verify Account Details page loads successfully
+   - Assert page URL contains "/account-details"
+   - Verify "Profile Details", "Subscription Details", "Billing Details", and "Order History" sections are visible
+
+2. Verify Purchase Users button navigation
+   - Click on "Purchase Users" button
+   - Assert navigation happens
+   - Verify URL contains "payment"
+
+3. Verify Profile Details Edit modal
+   - Click on "Edit" button in Profile Details section
+   - Verify edit modal opens
+   - Assert "Name" field is visible
+   - Assert "Company" field is visible
+   - Close the modal
+
+4. Verify Billing Details Edit navigation
+   - Click on "Edit" button in Billing Details section
+   - Verify billing details form/page opens
+   - Assert fields like Name, Company, Mobile, Address are visible
+
+5. Verify Order History section
+   - Check if Order History table is visible
+   - If data exists:
+       - Assert rows are displayed
+       - Verify columns: Date & Time, Order Id, Sub Id, Plan Name, Amount, Status
+   - If no data:
+       - Assert "No data found" or empty state message is displayed
+
+6. Verify Select Headers functionality
+   - Click on "Select Headers" button
+   - Verify dropdown opens
+   - Toggle any header checkbox
+   - Verify table updates accordingly
+   - Close dropdown
+
+

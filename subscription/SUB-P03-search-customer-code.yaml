@@ -1,0 +1,50 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Subscriptions page
+- tapOn: Subscriptions
+
+- tapOn: Search here
+- scrollUntilVisible:
+    element:
+      id: "#subCode"
+    direction: UP
+    timeout: 50000
+    speed: 40
+    visibilityPercentage: 100
+    centerElement: false
+
+- tapOn: SubCode
+
+- inputText:
+    text: "SUB-P013125"
+
+- tapOn: Search

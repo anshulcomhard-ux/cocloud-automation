@@ -1,0 +1,54 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Verify widgets are visible before applying filter
+- assertVisible: "Total Paid Subscriptions:"
+
+- assertVisible: " New Subscriptions Activations:"
+
+- assertVisible:
+    text: "Subscriptions Summary"
+
+- tapOn:
+    point: 77%,22%
+
+- tapOn:
+    point: 77%,47%
+- tapOn: Ok
+
+- assertVisible: " Total Renewals "
+- tapOn:
+    id: mat-select-2
+- tapOn:
+    point: 27%,61%
+- tapOn: Ok
+- assertVisible: " Total Renewals "
+

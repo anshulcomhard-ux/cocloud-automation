@@ -1,0 +1,68 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+#Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Google Drive page
+- tapOn:
+    text: "Google Drive"
+
+# Verify Google Drive page is loaded
+- assertVisible:
+    text: "Google Drive"
+
+# Verify Custom Date filter is visible
+- assertVisible:
+    text: "Custom Date"
+
+# Verify summary cards are visible
+- assertVisible:
+    text: "Auth Attempt"
+
+- assertVisible:
+    text: "Auth Completed"
+
+- assertVisible: Schedular Add
+
+- assertVisible: "Success Schedular Log  "
+
+
+- assertVisible: "Failed Schedular Log  "
+- assertVisible: "Delete Schedular Log "
+
+
+# Verify Scheduler Log Report section title is visible
+- assertVisible: Schedular Log Report
+
+
+
+# Verify empty state or chart is displayed
+- assertVisible:
+    text: "No Data Found"
+    optional: true

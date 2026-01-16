@@ -1,0 +1,62 @@
+url: https://dev.partner.cocloud.in/
+---
+- launchApp
+
+# Open Partner Portal
+- openLink:
+    link: https://dev.partner.cocloud.in/
+
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify successful login - dashboard is visible
+- assertVisible:
+    text: "Dashboard"
+
+# Verify dashboard loads with default range
+# Key Metrics: Verify Subscriptions Summary is visible
+- assertVisible:
+    text: "Subscriptions Summary"
+
+# Key Metrics: Verify Total Paid Subscriptions card is visible
+- assertVisible: "Total Paid Subscriptions:"
+
+- assertVisible: Dashboard and Statistics
+
+
+
+# Wallet Balance: Verify wallet balance is visible on dashboard- assertVisible: Line
+
+
+
+# Wallet Balance: Verify Wallet Amount label is visible
+- assertVisible: "Wallet: -₹5,535,210.58"
+
+# Verify dashboard is fully loaded (not showing login page)
+- assertNotVisible:
+    text: "Sign in to CoCloud"
+
+# Final verification - dashboard page is loaded with all key elements
+- assertVisible:
+    text: "Dashboard"

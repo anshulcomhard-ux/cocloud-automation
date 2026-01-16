@@ -1,0 +1,61 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Cloud User page
+- tapOn:
+    text: "Cloud User"
+
+# Verify Cloud User page is loaded
+- assertVisible:
+    text: "Cloud User"
+
+# Open search panel if collapsed
+- tapOn:
+    text: "Search here"
+
+
+
+# Click Search button without entering any values
+- tapOn:
+    text: "Search"
+
+
+- assertNotVisible:
+    text: Sub id
+   
+
+
+
+# Verify no results are displayed
+# Verify empty state message is still visible
+- assertVisible:
+    text: "To see the data, search on any field"
+

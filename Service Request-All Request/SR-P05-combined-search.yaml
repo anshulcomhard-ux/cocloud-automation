@@ -1,0 +1,80 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Service Request → All Requests page
+- tapOn:
+    text: "Service Request"
+
+
+
+# Click on All Requests submenu item
+- tapOn:
+    text: "All Requests "
+
+# Verify All Requests page is loaded
+- assertVisible:
+    text: "All Requests "
+
+# Open search section if collapsed
+- tapOn:
+    text: "Search here"
+
+# Enter values in multiple search fields
+# Enter Sub Id
+- tapOn:
+    text: "Sub Id"
+
+- inputText:
+    text: "SUB-02801"
+
+
+
+# Enter Ticket Id
+- tapOn:
+    text: "Ticket Id"
+
+- inputText:
+    text: "16404"
+
+# Click Search button
+- tapOn:
+    text: "Search"
+
+# Verify table rows are visible (filtered results matching all criteria)
+- assertVisible:
+    text: "Sub Id"
+
+# Verify filters work together correctly
+- assertVisible:
+    text: "SUB-02801"
+
+- assertVisible:
+    text: "16404"

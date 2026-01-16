@@ -1,0 +1,55 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+ #Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Subscriptions page
+# Click on Subscsriptions menu item in sidebar
+- tapOn: Subscriptions
+    
+# Verify Subscriptions page is loaded
+- assertVisible:
+    text: "Subscriptions"
+
+# ----------------------------
+# Test 1: Direct URL Access with Non-Existent Subscription ID
+# ----------------------------
+
+# Try to access non-existent subscription via URL
+# Navigate to a subscription detail page with invalid ID
+- openLink:
+    link: https://dev.partner.cocloud.in/subscriptions/INVALID-SUB-ID-999999
+
+# Verify 404 error handling
+# Check for 404 error message or Not Found page
+- assertVisible:
+    text: "Page not found"
+
+
+

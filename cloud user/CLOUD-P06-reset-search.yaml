@@ -1,0 +1,97 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Cloud User page
+- tapOn:
+    text: "Cloud User"
+
+# Verify Cloud User page is loaded
+- assertVisible:
+    text: "Cloud User"
+
+# Open search panel if collapsed
+- tapOn:
+    text: "Search here"
+
+# Enter Sub Id in search field
+- tapOn: Sub Id
+
+
+- inputText:
+    text: "123"
+
+
+
+# Enter Admin User Email
+- tapOn:
+    text: Admin User Email
+
+- inputText:
+    text: "Anilgoyal57@rediffmail.com"
+
+
+
+# Enter Cloud User Email
+- tapOn:
+    text: Cloud User Email
+
+- inputText:
+    text: Sunriseagency101@gmail
+
+# Click Search button
+- tapOn:
+    text: "Search"
+
+# Click Reset button
+- tapOn:
+    text: "Reset"
+
+# Verify all fields are cleared
+# Verify Sub Id field is empty
+- assertVisible:
+    text: Sub Id
+
+# Verify Admin User Email field is empty
+- assertVisible: Admin User Email
+
+
+
+# Verify Cloud User Email field is empty
+- assertVisible: Cloud User Email
+
+- scrollUntilVisible:
+    element: To see the data, search on any field !
+
+# Verify search results are reset
+# Verify empty state message is displayed again
+- assertVisible:
+    text: "To see the data, search on any field"
+

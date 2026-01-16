@@ -1,0 +1,66 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Service Request → Raise Service Request page
+- tapOn:
+    text: "Reports"
+
+# Click on Raise Service Request submenu item
+- tapOn:
+    text: " MRR Report "
+
+# Verify Raise Service Request page is loaded
+- assertVisible:
+    text: "MRR Report"
+
+# Verify Salesman filter dropdown is visible
+- assertVisible:
+    text: "Salesman"
+
+# Verify Relationship Manager filter dropdown is visible
+- assertVisible:
+    text: "Relationship Manager"
+
+# Verify chart type selector buttons are visible
+- assertVisible:
+    text: "Line"
+
+- assertVisible:
+    text: "Bar"
+
+- assertVisible:
+    id: highcharts-vj7frad-2
+
+
+
+
+

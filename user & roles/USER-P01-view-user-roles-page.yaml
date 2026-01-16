@@ -1,0 +1,73 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to User & Roles page
+- tapOn:
+    text: "User & Roles"
+
+# Verify User & Roles page is loaded
+- assertVisible:
+    text: "User & Roles"
+
+# Verify "+ Add User" button is visible
+- assertVisible:
+    text: "Add User"
+
+# Verify Sales Person filter is visible
+- assertVisible: " Sales Person: "
+
+
+
+# Verify "Select Headers" button is visible
+- assertVisible: " Select Headers "
+
+
+
+
+# Verify table columns are visible- assertVisible: " Select Headers "
+
+- assertVisible:
+    text: " Name "
+
+- assertVisible:
+    text: " Email "
+
+- assertVisible:
+    text: " Mobile No "
+
+- assertVisible:
+    text: " Role "
+
+- assertVisible:
+    text: " Status "
+
+- assertVisible:
+    text: " Company "

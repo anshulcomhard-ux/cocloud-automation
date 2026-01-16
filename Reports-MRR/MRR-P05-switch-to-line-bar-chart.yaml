@@ -1,0 +1,61 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Reports → MRR Report page
+- tapOn:
+    text: "Reports"
+
+
+
+# Click on MRR Report submenu item
+- tapOn:
+    text: "MRR Report"
+
+# Verify MRR Report page is loaded
+- assertVisible:
+    text: "MRR Report"
+
+# Click on "Line" chart type button
+- tapOn:
+    text: "Line"
+
+# Click on "Line" chart type button
+- tapOn:
+    text: "Bar"
+
+# Click on "Line" chart type button
+- tapOn:
+    text: "Line"
+
+# Verify chart type is Line
+- assertVisible:
+    text: "Line"
+

@@ -1,0 +1,64 @@
+url: https://dev.partner.cocloud.in/
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify successful login - dashboard is visible
+- assertVisible:
+    text: "Dashboard"
+
+# Navigate to a protected page (e.g., Dashboard or any other protected route)
+# Verify we're on a protected page
+- assertNotVisible:
+    text: "Sign in to CoCloud"
+
+# Perform logout
+# Click on 3 dots in header of dashboard- tapOn: " Logout"
+
+- tapOn:
+    point: 95%,4%
+
+- tapOn: " Logout"
+- tapOn: Custom Date
+
+
+
+# Verify logout successful - redirected to login page
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Verify token is cleared - dashboard should not be accessible
+- assertNotVisible:
+    text: "Dashboard"
+
+# Test back button - try to go back to protected page
+- back
+
+
+
+# Verify dashboard is still not accessible after back button
+- assertNotVisible:
+    text: "Dashboard"
+

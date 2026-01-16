@@ -1,0 +1,86 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Cloud User page
+- tapOn:
+    text: "Cloud User"
+
+# Verify Cloud User page is loaded
+- assertVisible:
+    text: "Cloud User"
+
+# Search for cloud users to get results
+# Open search panel
+- tapOn:
+    text: "Search here"
+
+# Enter Sub Id
+- tapOn:
+    text: Sub Id
+
+- inputText:
+    text: "123"
+
+# Click Search button
+- tapOn:
+    text: "Search"
+
+
+
+# Click Select Headers button
+- tapOn: " Select Headers "
+
+
+
+# Verify headers dropdown menu is visible
+- assertVisible:
+    text: "Sub id"
+
+# Select/deselect columns
+# Click on a header checkbox to toggle
+- tapOn:
+    text: Sub Id
+    index: 1
+
+
+
+ # Click Select Headers button
+- tapOn: " Select Headers "  
+
+# Verify table columns update
+# Table should not reflect unselected columns
+- assertNotVisible:
+    text: Sub id
+
+
+
+
+

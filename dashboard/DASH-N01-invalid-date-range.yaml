@@ -1,0 +1,82 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Verify widgets are visible before applying filter
+- assertVisible: "Total Paid Subscriptions:"
+
+
+- assertVisible: " New Subscriptions Activations:"
+
+- assertVisible: Subscriptions Summary
+
+
+# Get initial state of widgets (for comparison)
+# Note: Widgets should remain unchanged after invalid date range
+
+# Open date range picker
+- tapOn:
+    text: "Custom Date"
+
+- tapOn:
+    point: 69%,27%
+- tapOn: " 2 "
+
+- tapOn: Apply
+
+
+# ----------------------------
+# Validation: Error message should appear
+# ----------------------------
+
+- assertVisible: " Total Renewals "
+- assertVisible: "0"
+
+
+# ----------------------------
+# Validation: No API call made - widgets unchanged
+# ----------------------------
+
+
+
+# Verify no error or empty state (data should remain as before)
+- assertNotVisible:
+    text: "No data found"
+
+# Verify date range picker is still open or shows error (not applied)
+# Calendar/date picker should still be visible or show validation error
+- assertVisible:
+    text: "Custom Date"
+
+# Final verification - dashboard is still functional
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+

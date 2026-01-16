@@ -1,0 +1,98 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Audit Logs page
+- tapOn: Audit Log
+
+
+
+# Verify Audit Logs page is loaded
+- assertVisible:
+    text: "Audit Logs"
+
+# Open search section if collapsed
+- tapOn:
+    text: "Search here"
+
+# Verify search fields are visible
+- assertVisible:
+    text: "Name"
+
+- assertVisible:
+    text: "Email"
+
+- assertVisible:
+    text: "URL Endpoint"
+
+- assertVisible:
+    text: "API Response"
+
+- assertVisible:
+    text: "Task Type"
+
+- assertVisible:
+    text: "Custom Date"
+
+# Verify Search button is visible
+- assertVisible:
+    text: "Search"
+
+# Verify Reset button is visible
+- assertVisible:
+    text: "Reset"
+
+# verify select header is visible
+- assertVisible:
+    text: "Select Headers"
+
+
+
+- assertVisible:
+    text: "Date & Time"
+
+- assertVisible:
+    text: "Name"
+
+- assertVisible:
+    text: "Email"
+
+- assertVisible:
+    text: "Task Type"
+
+- assertVisible:
+    text: "URL Endpoint"
+
+- assertVisible:
+    text: "API Response"
+
+# Verify pagination info is visible
+- assertVisible:
+    text: "Showing"

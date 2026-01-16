@@ -1,0 +1,52 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Service Request → Raise Service Request page
+- tapOn:
+    text: "Service Request"
+
+
+# Click on Raise Service Request submenu item
+- tapOn:
+    text: " Raise Request "
+
+# Verify Raise Service Request page is loaded
+- assertVisible:
+    text: "Raise Service Request "
+
+# Click on Billing & Payment category
+- tapOn:
+    text: "Billing & Payment"
+
+# Verify Sub Id dropdown appears
+- assertVisible:
+    text: "Select Sub Id"
+

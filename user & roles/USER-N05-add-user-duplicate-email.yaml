@@ -1,0 +1,113 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to User & Roles page
+- tapOn:
+    text: "User & Roles"
+
+# Verify User & Roles page is loaded
+- assertVisible:
+    text: "User & Roles"
+
+# Click "+ Add User" button
+- tapOn:
+    text: "Add User"
+
+# Verify Add Salesman form is visible
+- assertVisible:
+    text: "Add Salesman"
+
+# Fill Full Name (required)
+- tapOn:
+    text: "Full Name"
+
+- inputText:
+    text: "Test User Duplicate Email"
+
+# Enter email that already exists (use an existing email from the table)
+- tapOn:
+    text: "Email Id"
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Fill Password (required)
+- tapOn:
+    text: "Password"
+
+- inputText:
+    text: "Test@123456"
+
+# Fill Confirm Password (required)
+- tapOn:
+    text: "Confirm Password"
+
+- inputText:
+    text: "Test@123456"
+
+# Fill Mobile Number (required)
+- tapOn:
+    text: "Mobile Number"
+
+- inputText:
+    text: "9876543216"
+
+# Select Role
+- tapOn:
+    text: "Select role"
+
+- tapOn:
+    text: "Salesperson"
+
+# Click Submit button
+- tapOn:
+    text: "Submit"
+
+# Verify duplicate email error
+- assertVisible:
+    id: "#toast-container"
+
+# OR verify specific duplicate email error message
+- assertVisible:
+    text: "already exists"
+
+# OR verify "duplicate" message
+- assertVisible:
+    text: "duplicate"
+
+# Verify form is not submitted
+# Verify form is still visible
+- assertVisible:
+    text: "Add Salesman"
+
+# Verify no success message
+- assertNotVisible:
+    text: "successfully"

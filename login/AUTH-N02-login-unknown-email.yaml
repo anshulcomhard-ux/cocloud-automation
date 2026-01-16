@@ -1,0 +1,40 @@
+url: https://dev.partner.cocloud.in/
+---
+- launchApp
+  #Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+# Enter unknown/random email (not in system)
+- inputText:
+    text: "unknownuser@nonexistent.com"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+# Enter any password
+- inputText:
+    text: "anypassword123"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify still on login page (no route access)
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Verify Sign in button is still visible (not logged in)
+- assertVisible:
+    text: "Sign in"
+
+# Verify dashboard is NOT accessible (no token stored)
+- assertNotVisible:
+    text: "Dashboard"

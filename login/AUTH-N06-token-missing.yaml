@@ -1,0 +1,38 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Direct hit to protected route /dashboard without token
+# Should redirect to /login
+- openLink:
+    link: https://dev.partner.cocloud.in/dashboard
+
+# Verify redirected to  page not found(token missing, no access)
+- assertVisible:
+    text: "Click Here"
+
+# Verify dashboard is NOT accessible
+- assertNotVisible:
+    text: "Dashboard"
+
+
+
+# Test direct navigation to another protected route (if applicable)
+- openLink:
+    link: https://dev.partner.cocloud.in/customers
+
+# Verify still page not found (token missing)
+- assertVisible:
+    text: "Click Here"
+
+
+- tapOn: Click Here
+
+ #Should be redirected back to login or show access denied
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Verify protected route is not accessible
+- assertNotVisible:
+    text: "Dashboard"
+
+

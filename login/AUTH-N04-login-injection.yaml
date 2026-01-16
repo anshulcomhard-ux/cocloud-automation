@@ -1,0 +1,42 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+  
+
+# ----------------------------
+# Attempt SQL / Script Injection
+# ----------------------------
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "' OR 1=1; -- <script>alert(1)</script>"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "' OR '1'='1' -- <img src=x onerror=alert(1)>"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# ----------------------------
+# Validation
+# ----------------------------
+
+# Login should fail (still on login page)
+- assertVisible:
+    text: "Sign in"
+
+
+

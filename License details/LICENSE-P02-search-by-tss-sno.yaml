@@ -1,0 +1,63 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to License Details page
+- tapOn:
+    text: "License Details"
+
+# Verify License Details page is loaded
+- assertVisible:
+    text: "License Details"
+
+# Open search section if collapsed
+- tapOn:
+    text: "Search here"
+
+# Enter TSS S.no in TSS S.no field
+- tapOn:
+    text: TSS S.no
+
+- inputText:
+    text: "729147492"
+
+# Click Search button
+- tapOn:
+    text: "Search"
+
+
+
+# Verify table rows are visible (filtered results)
+- assertVisible:
+    text: TSS S.no
+
+# Verify only matching license details are shown
+- assertVisible:
+    text: "729147492"

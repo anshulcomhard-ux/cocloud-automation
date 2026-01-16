@@ -1,0 +1,76 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Subscriptions page
+# Click on Subscriptions menu item in sidebar
+- tapOn: subscriptions
+    
+
+# Verify Subscriptions page is loaded
+- assertVisible:
+    text: "Subscriptions"
+
+# ----------------------------
+# Test 1: Submit with No Required Fields Filled
+# ----------------------------
+
+# Click New Subscription button
+- tapOn:
+    text: "New"
+
+# Verify New Subscription form is visible
+- assertVisible:
+    text: "New Subscription"
+
+# Try to submit without filling any required fields
+# Scroll until Submit button is visible
+- scrollUntilVisible:
+    element:
+      text: "Submit"
+    direction: DOWN
+    timeout: 50000
+    speed: 40
+    visibilityPercentage: 100
+    centerElement: false
+
+# Click Submit button (should trigger validation)
+- tapOn:
+    text: "Submit"
+
+# Verify validation errors appear
+# Customer is required
+- assertVisible:
+    text: "required"
+
+# Verify form is still visible (not submitted)
+- assertVisible:
+    text: "New Subscription"
+

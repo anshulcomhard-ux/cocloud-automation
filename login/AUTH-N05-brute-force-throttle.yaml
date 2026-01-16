@@ -1,0 +1,55 @@
+url: https://dev.partner.cocloud.in/
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Attempt 1: Invalid credentials
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "wrongpassword1"
+
+- tapOn:
+    text: "Sign in"
+
+# Attempt 2: Invalid credentials
+
+
+- tapOn:
+    text: "Sign in"
+
+# Attempt 3: Invalid credentials
+
+
+- tapOn:
+    text: "Sign in"
+
+# Attempt 4: Invalid credentials
+
+
+- tapOn:
+    text: "Sign in"
+
+# Attempt 5: Invalid credentials (threshold usually triggered after 3-5 attempts)
+
+
+- tapOn:
+    text: "Sign in"
+
+
+
+
+# Verify still on login page or showing throttle message
+- assertVisible:
+    text: "Sign in to CoCloud"

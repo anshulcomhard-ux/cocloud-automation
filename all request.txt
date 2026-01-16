@@ -1,0 +1,5 @@
+select headers
+pagination
+search by email - valid, invalid - data shows else text shown-No Service Request !, clear search and enter restore data
+all cards are clickable - data shows as mentioned on each cards
+page loads successfully

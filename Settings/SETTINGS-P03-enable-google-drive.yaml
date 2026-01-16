@@ -1,0 +1,51 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Settings page
+- tapOn:
+    text: "Settings"
+
+# Verify Settings page is loaded
+- assertVisible:
+    text: "Settings"
+
+- tapOn: on
+
+
+# Verify checkbox is checked (by checking if it's visible/selected)
+# Click Save button
+- tapOn:
+    text: "Save"
+
+# Verify success message appears
+- assertVisible:
+    text: "success"
+    optional: true

@@ -1,0 +1,163 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Customers page
+# Click on Customer menu item in sidebar
+- tapOn: Customer
+
+
+
+# Verify Customers page is loaded
+- assertVisible:
+    text: "Customer"
+
+# Verify customers list table is visible
+- assertVisible:
+    id: "table"
+
+# ----------------------------
+# Verify Correct Columns are Displayed
+# ----------------------------
+
+# Verify table headers/columns are visible
+# Common columns in customer table:
+# - Name, Email, Mobile, Company, Status, Actions, etc.
+
+# Verify Name column is visible
+- assertVisible:
+    text: "Name"
+
+# Verify Email column is visible
+- assertVisible:
+    text: "Email"
+
+# Verify Mobile column is visible
+- assertVisible:
+    text: "Mobile"
+
+# Verify Company column is visible (if present)
+- assertVisible:
+    text: "Company"
+
+# Verify table rows are visible (data is loaded)
+- assertVisible:
+    id: "tr.mat-mdc-row"
+
+# Verify pagination info is visible (e.g., "Showing 1 to 20 of X records")
+- assertVisible:
+    id: "div.total-data-info"
+
+# ----------------------------
+# Test Pagination Functionality
+# ----------------------------
+
+# Test 1: Verify pagination controls are visible
+# Verify items per page selector is visible
+- assertVisible:
+    id: "mat-form-field.mat-mdc-paginator-page-size-select mat-select"
+
+# Verify pagination range label is visible
+- assertVisible:
+    id: "div.mat-mdc-paginator-range-label"
+
+# Verify Next page button is visible (if not on last page)
+- assertVisible:
+    id: "button.mat-mdc-paginator-navigation-next"
+
+# Test 2: Navigate to next page
+# Click Next page button
+- tapOn:
+    id: "button.mat-mdc-paginator-navigation-next[aria-label='Next page']"
+
+# Verify table is still visible (page loaded)
+- assertVisible:
+    id: "table"
+
+# Verify table rows are visible (new page data loaded)
+- assertVisible:
+    id: "tr.mat-mdc-row"
+
+# Verify pagination info updated
+- assertVisible:
+    id: "div.total-data-info"
+
+# Test 3: Navigate to previous page
+# Click Previous page button
+- tapOn:
+    id: "button.mat-mdc-paginator-navigation-previous[aria-label='Previous page']"
+
+# Verify table is still visible (page loaded)
+- assertVisible:
+    id: "table"
+
+# Verify table rows are visible (previous page data loaded)
+- assertVisible:
+    id: "tr.mat-mdc-row"
+
+# Verify pagination info updated
+- assertVisible:
+    id: "div.total-data-info"
+
+# Test 4: Change items per page
+# Click on items per page selector
+- tapOn:
+    id: "mat-form-field.mat-mdc-paginator-page-size-select mat-select"
+
+# Select different page size (e.g., 50 items per page)
+- tapOn:
+    text: "50"
+
+# Verify table is still visible (page reloaded with new page size)
+- assertVisible:
+    id: "table"
+
+# Verify table rows are visible (new page size applied)
+- assertVisible:
+    id: "tr.mat-mdc-row"
+
+# Verify pagination info updated with new page size
+- assertVisible:
+    id: "div.total-data-info"
+
+# Verify columns are still correct after pagination
+- assertVisible:
+    text: "Name"
+
+- assertVisible:
+    text: "Email"
+
+- assertVisible:
+    text: "Mobile"
+
+# Final verification - customers list is functional
+- assertVisible:
+    text: "Customer"
+

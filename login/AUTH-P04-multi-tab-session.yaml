@@ -1,0 +1,89 @@
+url: https://dev.partner.cocloud.in/
+---
+- launchApp
+
+# Tab A: Login and navigate to dashboard
+- openLink:
+    link: https://dev.partner.cocloud.in/
+
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify successful login - dashboard is visible (Tab A)
+- assertVisible:
+    text: "Dashboard"
+
+# Tab B: Open dashboard in new tab/window (simulate second tab)
+# Open another instance of the dashboard
+- openLink:
+    link: https://dev.partner.cocloud.in/dashboard
+
+# Verify Tab B also shows dashboard (session is valid)
+- assertVisible:
+    text: "Dashboard"
+
+# Tab A: Perform logout
+# Navigate back to first tab context and logout
+- openLink:
+    link: https://dev.partner.cocloud.in/dashboard
+
+# Click on 3 dots in header of dashboard (Tab A)
+- tapOn:
+    point: 95%,4%
+
+- tapOn: " Logout"
+- tapOn: Custom Date
+
+
+# Verify logout successful in Tab A - redirected to login page
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tab B: Verify session is invalidated
+# Next API call or navigation should force logout
+# Try to access dashboard again (this should trigger API call and force logout)
+- openLink:
+    link: https://dev.partner.cocloud.in/dashboard
+
+# Verify Tab B is also logged out (session invalidated)
+# Should redirect to login page
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Verify dashboard is NOT accessible in Tab B
+- assertNotVisible:
+    text: "Dashboard"
+
+# Verify token is cleared - try to navigate to any protected route
+- openLink:
+    link: https://dev.partner.cocloud.in/customers
+
+# Verify still redirected to login (token cleared, session invalidated)
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Final verification - both tabs should require login
+- assertNotVisible:
+    text: "Dashboard"
+

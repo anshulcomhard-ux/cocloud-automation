@@ -593,7 +593,7 @@ test.describe('Admin Portal - Server Module', () => {
   
   // ==================== ADD NEW SERVER WITH TABLE VALUES TEST ====================
 
-  test.skip('should verify add new server - retrieve column values from table and fill form - submit and verify', async ({ page }, testInfo) => {
+  test.only('should verify add new server - retrieve column values from table and fill form - submit and verify', async ({ page }, testInfo) => {
     test.setTimeout(120000); // 3 minutes
     
     console.log('\n=== Test: Add New Server - Retrieve Column Values and Fill Form ===');

@@ -1,0 +1,56 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+- scrollUntilVisible:
+    element: Settings
+
+
+# Navigate to Settings page
+- tapOn:
+    text: "Settings"
+
+# Verify Settings page is loaded
+- assertVisible:
+    text: "Settings"
+
+# Verify "Show Google Drive" section is visible
+- assertVisible:
+    text: "Show Google Drive"
+
+# Verify checkbox is visible
+- assertVisible:
+    text: "Show google drive"
+
+
+
+# Verify Save button is visible
+- assertVisible:
+    text: "Save"

@@ -1,0 +1,69 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Google Drive page
+- tapOn:
+    text: "Google Drive"
+
+# Verify Google Drive page is loaded
+- assertVisible:
+    text: "Google Drive"
+
+# Click on Custom Date filter
+- tapOn:
+    text: "Custom Date"
+
+- tapOn:
+    point: 93%,17%
+- tapOn: DEC 2025
+
+- tapOn: " 2027 "    
+- tapOn: " JUL "
+- tapOn: " 2 "
+- tapOn: " 24 "
+
+- tapOn: Apply
+
+
+# Verify appropriate handling (error message or no data)
+# Verify summary cards show zero or appropriate message
+- assertVisible:
+    text: "Auth Attempt"
+
+- assertVisible: "Failed Schedular Log  "    
+
+# Verify Scheduler Log Report shows empty state or error
+- assertVisible: Schedular Log Report
+
+
+- assertVisible:
+    text: "No Data Found"
+    optional: true

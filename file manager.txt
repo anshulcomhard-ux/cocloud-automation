@@ -1,0 +1,71 @@
+Write Playwright automation test cases to verify the Search functionality on the File Manager page.
+
+Test Flow:
+1. Navigate to the File Manager page.
+2. Identify the table containing file data.
+3. Retrieve a valid file name dynamically from the table (File Name column).
+4. Click on the Search input field and enter the retrieved valid file name.
+5. Verify that:
+   - Matching file records are displayed in the table
+   - Table row count is greater than 0
+6. Clear the search field.
+7. Enter an incorrect or non-existent file name.
+8. Verify that:
+   - No records are displayed in the table
+   - "No data found" or "No data shown" message is displayed
+9. Clear the search field again.
+10. Ensure the table resets and all records are displayed.
+
+
+Write Playwright automation test cases to verify the File Permission feature on the File Manager page.
+
+Test Flow:
+1. Navigate to the File Manager page.
+2. Verify file table is displayed.
+3. If data is available:
+   - Select a file from the table.
+4. Verify the Permission button becomes visible/enabled.
+5. Click on the Permission button.
+6. Verify the User Permission modal opens successfully.
+
+Permission Validation:
+7. Verify the first user’s permission is disabled (radio buttons cannot be changed).
+8. Identify second and third users (if available):
+   - Change permission from Allow to Deny OR Deny to Allow accordingly.
+9. Click the Submit button.
+10. Verify success message or API response (status 200).
+
+Persistence Validation:
+11. Again select the same file.
+12. Click on the Permission button.
+13. Verify that previously updated permissions are retained and displayed correctly.
+
+RENAME FILE
+========================
+1. Navigate to the File Manager page.
+2. Verify file table is visible.
+3. Select a file from the table.
+4. Click on the "Operate" dropdown for the selected file.
+5. Click on the "Rename" option.
+6. file name  field will become input field and editable is displayed.
+7. Enter a new valid file name.
+8. Click enter
+9. Verify success message or API response.
+10. Verify file name is updated correctly in the table.
+
+DOWNLOAD FILE
+========================
+1. Select a file from the File Manager table.
+2. Click on the "Operate" dropdown.
+3. Click on the "Download" option.
+4. Verify file download is triggered successfully.
+
+DELETE FILE
+========================
+1. Select a file from the File Manager table.
+2. Click on the "Operate" dropdown.
+3. Click on the "Delete" option.
+4. Verify confirmation modal appears.
+5. Click on Confirm Delete.
+6. Verify success message or API response.
+7. Verify the deleted file is no longer visible in the table.

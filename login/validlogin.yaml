@@ -1,0 +1,36 @@
+appId: https://dev.partner.cocloud.in
+---
+# Open Partner Portal
+- openLink:
+    link: https://dev.partner.cocloud.in/
+
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+    
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Wait for navigation
+
+# Verify successful login
+- assertVisible:
+    text: "Dashboard"

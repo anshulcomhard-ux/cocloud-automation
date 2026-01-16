@@ -1,0 +1,46 @@
+Write Playwright automation test cases for the "Add-ons" page.
+
+Preconditions:
+- User is logged in successfully
+- User has access to Add-ons module
+
+Test Scenarios:
+
+========================
+VERIFY PAGE LOAD
+========================
+1. Navigate to Add-ons page using the left sidebar.
+2. Verify page title "Add-ons" is visible.
+3. Verify the following add-on cards are displayed:
+   - Cloud Service Charges
+   - Tally On Cloud – Power User
+4. Verify price, GST text, and action buttons ("Buy Now", "Contact Sales") are visible on each card.
+
+========================
+VERIFY BUY NOW NAVIGATION
+========================
+1. Click on the "Buy Now" button for any add-on.
+2. Verify user is redirected to the payment page.
+3. Assert the current URL contains the keyword "payment".
+4. Verify payment page loads without error.
+
+========================
+VERIFY CONTACT SALES MODAL – NO ACTION
+========================
+1. Click on the "Contact Sales" button.
+2. Verify Contact Sales confirmation modal opens.
+3. Click on "No" button in the modal.
+4. Verify modal is closed successfully.
+5. Verify no navigation happens.
+
+========================
+VERIFY CONTACT SALES MODAL – YES ACTION
+========================
+1. Click on the "Contact Sales" button again.
+2. Verify the confirmation modal opens.
+3. Click on "Yes" button in the modal.
+4. Verify modal closes successfully.
+5. Verify a success toast/notification is displayed.
+6. Assert toast message text contains confirmation (e.g., "Sales team will contact you").
+
+

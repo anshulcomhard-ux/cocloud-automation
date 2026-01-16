@@ -1,0 +1,146 @@
+## Partner Portal automated Tests list.
+
+### portals/partner/tests/login.spec.js
+1. **should login and display dashboard** (ACTIVE)
+
+### portals/partner/tests/subscription.spec.js
+1. **should add new subscription and select customer from dropdown** (ACTIVE)
+2. **should verify subscription filters and validate card totals match pagination totals** (SKIPPED)
+3. **should verify complete search functionality with all filters** (SKIPPED)
+4. **should verify column visibility dropdown functionality** (SKIPPED)
+5. **should verify pagination functionality** (SKIPPED)
+6. **should verify Export Excel button functionality** (SKIPPED)
+7. **should verify table sorting functionality for all sortable columns** (SKIPPED)
+8. **should verify assign user functionality with single and multiple row selection** (SKIPPED)
+9. **should validate New Paid Subscriptions card filter** (SKIPPED)
+
+### portals/partner/tests/subscriptionliveplan.spec.js
+1. **should verify subscription details page navigation and page load** (ACTIVE)
+2. **should verify subscription details page elements visibility** (ACTIVE)
+3. **should verify Action dropdown menu options** (ACTIVE)
+4. **should verify tab navigation (Overview, Transactions, Recent Activities)** (ACTIVE)
+5. **should verify Update Salesperson functionality** (ACTIVE)
+6. **should verify Update Relationship Manager functionality** (ACTIVE)
+7. **should verify Update Email functionality** (ACTIVE)
+8. **should verify Update Pipedrive Deal ID functionality** (ACTIVE)
+9. **should verify Change Users functionality** (ACTIVE)
+10. **should verify Change Rate functionality** (ACTIVE)
+11. **should verify Plan & Addon Details table content** (ACTIVE)
+12. **should verify Change Plan button functionality** (ACTIVE)
+13. **should verify Renew Now button functionality** (ACTIVE)
+14. **should verify Login as a Customer button functionality** (ACTIVE)
+
+### portals/partner/tests/salespersondashboard.spec.js
+1. **should verify salesperson side modules visibility** (SKIPPED)
+2. **should verify sales manager side modules visibility** (SKIPPED)
+3. **should verify relationship manager side modules visibility** (SKIPPED)
+4. **should verify assigned users to salesperson are visible and selectable in salesperson dropdown on dashboard** (SKIPPED)
+5. **should verify billing details card is visible and details visible on it for salesperson** (ACTIVE)
+
+### portals/partner/tests/servicerequest_raiserequest.spec.js
+1. **should verify Raise Service Request page UI and behavior** (SKIPPED)
+2. **should complete Technical Issue flow (without image uplaod) and create ticket with Verify Details modal** (SKIPPED)
+3. **should not allow duplicate Technical Issue request for same Sub Id and Issue Type/Sub-Type** (SKIPPED)
+4. **should raise Billing & Payment request and verify Issue Type/Sub-Issue Type are empty** (SKIPPED)
+5. **should not allow duplicate Billing & Payment request for same Sub Id and show existing ticket toast** (SKIPPED)
+6. **should not allow duplicate Feedback or Feature Request for same Sub Id and show existing ticket toast** (SKIPPED)
+7. **should verify cannot upload image larger than 500KB for Technical Issue** (SKIPPED)
+8. **should verify cannot upload more than 3 images (each under 500KB)** (SKIPPED)
+9. **should verify only image files (JPEG, PNG, JPG, SVG) can be uploaded** (SKIPPED)
+10. **should verify can upload images with capital and lowercase file extensions** (SKIPPED)
+11. **should verify can upload image using three methods: drag and drop, browse, and Ctrl+V** (ACTIVE)
+12. **should raise Feedback or Feature Request and verify Issue Type/Sub-Issue Type are empty** (SKIPPED)
+13. **should navigate to All Requests when cancelling Technical Issue raise request** (SKIPPED)
+14. **should reset Technical Issue form state after page refresh** (SKIPPED)
+15. **should reset Billing & Payment form state after page refresh** (SKIPPED)
+16. **should reset dependent fields when Issue Type changes in Technical Issue form** (SKIPPED)
+17. **should reset Feedback or Feature Request form state after page refresh** (SKIPPED)
+
+### portals/partner/tests/servicerequest_allrequest.spec.js
+1. **should verify all requests functionality with search, reset, and status filters** (SKIPPED)
+2. **should verify Select Headers dropdown functionality** (SKIPPED)
+3. **should verify pagination functionality** (SKIPPED)
+4. **should verify ticket status cards behavior** (SKIPPED)
+5. **should verify Raise Service Request button navigation** (ACTIVE)
+
+### portals/partner/tests/userandroles.spec.js
+1. **should add a new salesman and verify all form validations** (SKIPPED)
+2. **should validate table headers, row data, and row-level actions** (SKIPPED)
+3. **should add user, verify in correct table, edit with Allow All checkbox, and verify updates** (SKIPPED)
+4. **should add user and then delete user based on role** (SKIPPED)
+5. **should verify table headers dropdown functionality for Sales Person table** (SKIPPED)
+6. **should add user, verify in correct table, and suspend user** (SKIPPED)
+7. **should add salesperson user and verify login with salesperson credentials** (SKIPPED)
+8. **should add salesperson manager user and verify login with salesperson manager credentials** (SKIPPED)
+9. **should add relationship manager user and verify login with relationship manager credentials** (ACTIVE)
+
+### portals/partner/tests/billingpage.spec.js
+1. **should verify Billing page elements and navigation** (SKIPPED)
+2. **should verify Billing table with Select Headers and row expand functionality** (SKIPPED)
+3. **should verify Billing page main table pagination functionality** (SKIPPED)
+4. **should verify Billing page sub-table pagination functionality** (SKIPPED)
+5. **should verify sub-table Select Headers dropdown functionality** (SKIPPED)
+6. **should verify Billing page Search & Reset functionality** (SKIPPED)
+7. **should verify Billing page Search by Sub ID functionality** (SKIPPED)
+8. **should verify Billing page Search by Bill ID functionality** (SKIPPED)
+9. **should verify Billing page Search by Customer Email functionality** (SKIPPED)
+10. **should verify Billing page Search by Bill Date functionality** (SKIPPED)
+11. **should verify Billing Details form validation and submission** (ACTIVE)
+
+### portals/partner/tests/settings.spec.js
+1. **should verify Settings page navigation and page load** (SKIPPED)
+2. **should verify Show Google Drive Section** (SKIPPED)
+3. **should verify Ticket Support Section** (SKIPPED)
+4. **should verify Negative Scenarios for radio button on ticket support section** (SKIPPED)
+5. **should verify Accessibility & UI Checks** (SKIPPED)
+6. **should verify Ticket Support toggle affects Customer Portal visibility** (SKIPPED)
+7. **should verify Google Drive access and modules for Live/Trial plan when enabled** (SKIPPED)
+8. **should verify Google Drive access and module availability for Expired plan when enabled** (SKIPPED)
+9. **should verify Google Drive access when setup is not completed for Live/Trial plan** (SKIPPED)
+10. **should verify Google Drive access when setup is not completed for Expired plan** (SKIPPED)
+11. **should verify Google Drive access when set up is not complete/or complete and modules for expired plan when Google Drive is disabled** (SKIPPED)
+
+### portals/partner/tests/forgetpsd.spec.js
+1. **should verify Forgot Password flow** (ACTIVE)
+2. **should verify Reset Password flow** (SKIPPED)
+
+### portals/partner/tests/auditlogs.spec.js
+1. **should test audit logs search functionality with all fields** (SKIPPED)
+2. **should verify Select Headers dropdown functionality** (ACTIVE)
+3. **should verify pagination functionality** (ACTIVE)
+
+### portals/partner/tests/licensedetails.spec.js
+1. **should test license details search functionality** (SKIPPED)
+2. **should verify Select Headers dropdown functionality** (SKIPPED)
+3. **should verify pagination functionality** (ACTIVE)
+
+### portals/partner/tests/create-customer.spec.js
+1. **should navigate to customer module and create a new customer** (SKIPPED)
+2. **should edit existing customer details from action menu** (SKIPPED)
+3. **should assign label to added customer using label dropdown** (SKIPPED)
+4. **should remove assigned label from customer via action dropdown** (SKIPPED)
+5. **should navigate to subscriptions of added customer and see no data** (SKIPPED)
+6. **should suspend newly added customer from action menu** (SKIPPED)
+7. **should activate suspended customer from action menu** (SKIPPED)
+8. **should delete newly added customer and reduce total count** (SKIPPED)
+9. **should search customer by company, email, label, status and mobile** (SKIPPED)
+10. **should show and hide customer table columns using Select Headers dropdown** (SKIPPED)
+11. **should test pagination functionality with all items per page options** (SKIPPED)
+12. **should create a new label and search for it** (SKIPPED)
+13. **should edit an existing label and verify updates** (SKIPPED)
+14. **should delete a created label** (SKIPPED)
+15. **should not allow creating duplicate label names** (ACTIVE)
+
+### portals/partner/tests/googledrive.spec.js
+1. **should verify all major elements on Google Drive page are visible and loaded correctly** (SKIPPED)
+2. **should verify Success and Failed Schedular Log clickable functionality** (ACTIVE)
+
+
+
+### portals/partner/tests/cloud-user.spec.js
+1. **should show error toast when searching without entering any fields** (SKIPPED)
+2. **should search cloud user by Sub ID, Admin Email, and Cloud User Email** (SKIPPED)
+3. **should show error toast when searching with invalid data** (SKIPPED)
+4. **should select and unselect headers to show/hide columns** (SKIPPED)
+5. **should click Sub ID and verify user details and cloud user details** (SKIPPED)
+6. **should select and unselect headers on cloud user details page** (ACTIVE)

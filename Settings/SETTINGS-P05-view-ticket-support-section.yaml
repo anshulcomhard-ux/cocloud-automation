@@ -1,0 +1,70 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+- scrollUntilVisible:
+    element: Settings
+
+
+# Navigate to Settings page
+- tapOn:
+    text: "Settings"
+
+# Verify Settings page is loaded
+- assertVisible:
+    text: "Settings"
+
+- scrollUntilVisible:
+    element: Ticket Support    
+
+# Verify "Ticket Support" section is visible
+- assertVisible:
+    text: "Ticket Support"
+
+# Verify question text is visible
+- tapOn: " Do you want to enable ticketing support feature on your customer portal? "
+
+
+# Verify "Yes" radio button is visible
+- assertVisible:
+    text: "Yes"
+
+# Verify "No" radio button is visible
+- assertVisible:
+    text: "No"
+
+# Verify email input field is visible
+- assertVisible: " Email address for receiving support-related emails: "
+
+
+
+# Verify Save button is visible
+- assertVisible:
+    text: "Save"

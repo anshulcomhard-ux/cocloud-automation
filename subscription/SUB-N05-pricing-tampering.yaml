@@ -1,0 +1,323 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Subscriptions page
+# Click on Subscriptions menu item in sidebar
+- tapOn:
+    id: "div.sidebar-items:has(span.title:has-text('Subscriptions'))"
+
+# Verify Subscriptions page is loaded
+- assertVisible:
+    text: "Subscriptions"
+
+# ----------------------------
+# Test Pricing Tampering Protection
+# ----------------------------
+
+# Click New Subscription button
+- tapOn:
+    text: "New"
+
+# Verify New Subscription form is visible
+- assertVisible:
+    text: "New Subscription"
+
+# Fill required fields
+# Select Customer
+- tapOn:
+    id: "button:has-text('Select Customer')"
+
+# Select first available customer
+- tapOn:
+    id: "ul.dropdown-menu li"
+
+# Select Product
+- tapOn:
+    id: "button:has-text('Select Product')"
+
+# Select first available product
+- tapOn:
+    id: "ul.dropdown-menu li"
+
+# Select Plan Name
+- tapOn:
+    id: "button:has-text('Plan Name')"
+
+# Select first available plan
+- tapOn:
+    id: "ul.dropdown-menu li"
+
+# ----------------------------
+# Test 1: Tamper with Amount Field (Modify Calculated Amount)
+# ----------------------------
+
+# Fill Unit Price (e.g., 1000)
+- tapOn:
+    id: "input#planUnitPrice"
+
+- inputText:
+    text: "1000"
+
+# Fill Quantity (e.g., 2)
+- tapOn:
+    id: "input#planQuantity"
+
+- inputText:
+    text: "2"
+
+# Verify Amount is auto-calculated (should be 1000 * 2 = 2000)
+# Amount field should show calculated value
+- assertVisible:
+    id: "input#planAmount"
+
+# Tamper with Amount field - modify to different value (e.g., 5000)
+# This simulates UI tampering attempt
+- tapOn:
+    id: "input#planAmount"
+
+# Clear and enter tampered value (different from calculated amount)
+- inputText:
+    text: "5000"
+
+# Fill Sales Person (required field)
+# Scroll until Sales Person field is visible
+- scrollUntilVisible:
+    element:
+      text: "Sales Person"
+    direction: DOWN
+    timeout: 50000
+    speed: 40
+    visibilityPercentage: 100
+    centerElement: false
+
+# Click on Sales Person dropdown
+- tapOn:
+    id: "button:has-text('Sales Person')"
+
+# Select first available sales person
+- tapOn:
+    id: "ul.dropdown-menu li"
+
+# Try to submit with tampered amount
+# Scroll until Submit button is visible
+- scrollUntilVisible:
+    element:
+      text: "Submit"
+    direction: DOWN
+    timeout: 50000
+    speed: 40
+    visibilityPercentage: 100
+    centerElement: false
+
+# Click Submit button
+- tapOn:
+    text: "Submit"
+
+# Verify server rejects the mismatch
+# Server should recalculate and validate, then reject if mismatch
+# Check for validation error or rejection message
+- assertVisible:
+    text: "invalid"
+
+# Verify error message mentions amount or pricing mismatch
+- assertVisible:
+    text: "amount"
+
+# Verify form is still visible (not submitted)
+- assertVisible:
+    text: "New Subscription"
+
+# Verify no success message appears
+- assertNotVisible:
+    text: "successfully"
+
+# Verify modal/form is still open
+- assertVisible:
+    id: "div.modal-section"
+
+# ----------------------------
+# Test 2: Tamper with Amount to Lower Value
+# ----------------------------
+
+# Clear and enter lower tampered value (e.g., 500 instead of 2000)
+- tapOn:
+    id: "input#planAmount"
+
+- inputText:
+    text: "500"
+
+# Try to submit with lower tampered amount
+- tapOn:
+    text: "Submit"
+
+# Verify server rejects the mismatch
+- assertVisible:
+    text: "invalid"
+
+# Verify form is still visible (not submitted)
+- assertVisible:
+    text: "New Subscription"
+
+# Verify no success message appears
+- assertNotVisible:
+    text: "successfully"
+
+# ----------------------------
+# Test 3: Verify Correct Amount is Accepted
+# ----------------------------
+
+# Enter correct amount (matching calculation: 1000 * 2 = 2000)
+- tapOn:
+    id: "input#planAmount"
+
+- inputText:
+    text: "2000"
+
+# Try to submit with correct amount
+- tapOn:
+    text: "Submit"
+
+# Verify submission succeeds (if other fields are valid)
+# Server should accept when amount matches calculation
+- assertVisible:
+    text: "successfully"
+
+# If subscription was created, cancel or navigate back
+# Cancel the form or navigate back
+- tapOn:
+    text: "Cancel"
+
+# Verify we're back on subscriptions list
+- assertVisible:
+    text: "Subscriptions"
+
+# ----------------------------
+# Test 4: Verify Server Recalculates on Submit
+# ----------------------------
+
+# Open New Subscription form again
+- tapOn:
+    text: "New"
+
+# Verify New Subscription form is visible
+- assertVisible:
+    text: "New Subscription"
+
+# Fill required fields
+# Select Customer
+- tapOn:
+    id: "button:has-text('Select Customer')"
+
+- tapOn:
+    id: "ul.dropdown-menu li"
+
+# Select Product
+- tapOn:
+    id: "button:has-text('Select Product')"
+
+- tapOn:
+    id: "ul.dropdown-menu li"
+
+# Select Plan Name
+- tapOn:
+    id: "button:has-text('Plan Name')"
+
+- tapOn:
+    id: "ul.dropdown-menu li"
+
+# Fill Unit Price
+- tapOn:
+    id: "input#planUnitPrice"
+
+- inputText:
+    text: "1500"
+
+# Fill Quantity
+- tapOn:
+    id: "input#planQuantity"
+
+- inputText:
+    text: "3"
+
+# Expected amount should be 1500 * 3 = 4500
+# Tamper with Amount to incorrect value
+- tapOn:
+    id: "input#planAmount"
+
+- inputText:
+    text: "3000"
+
+# Fill Sales Person
+- scrollUntilVisible:
+    element:
+      text: "Sales Person"
+    direction: DOWN
+    timeout: 50000
+    speed: 40
+    visibilityPercentage: 100
+    centerElement: false
+
+- tapOn:
+    id: "button:has-text('Sales Person')"
+
+- tapOn:
+    id: "ul.dropdown-menu li"
+
+# Try to submit
+- scrollUntilVisible:
+    element:
+      text: "Submit"
+    direction: DOWN
+    timeout: 50000
+    speed: 40
+    visibilityPercentage: 100
+    centerElement: false
+
+- tapOn:
+    text: "Submit"
+
+# Verify server recalculates and rejects mismatch
+# Server should calculate: 1500 * 3 = 4500, but received 3000
+# Should reject due to mismatch
+- assertVisible:
+    text: "invalid"
+
+# Verify form is still visible
+- assertVisible:
+    text: "New Subscription"
+
+# Cancel form
+- tapOn:
+    text: "Cancel"
+
+# Final verification - pricing tampering is rejected by server
+- assertVisible:
+    text: "Subscriptions"

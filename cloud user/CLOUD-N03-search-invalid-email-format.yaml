@@ -1,0 +1,69 @@
+url: https://dev.partner.cocloud.in
+---
+- launchApp
+# Verify login screen
+- assertVisible:
+    text: "Sign in to CoCloud"
+
+# Tap Email field
+- tapOn:
+    text: "Enter Email"
+    index: 0
+
+- inputText:
+    text: "contact@comhard.co.in"
+
+# Tap Password field
+- tapOn:
+    text: "Enter Password"
+    index: 0
+
+- inputText:
+    text: "hrhk@1111"
+
+# Tap Sign in button
+- tapOn:
+    text: "Sign in"
+
+# Verify Dashboard is visible
+- assertVisible:
+    text: "Dashboard and Statistics"
+
+# Navigate to Cloud User page
+- tapOn:
+    text: "Cloud User"
+
+# Verify Cloud User page is loaded
+- assertVisible:
+    text: "Cloud User"
+
+# Open search panel if collapsed
+- tapOn:
+    text: "Search here"
+
+
+
+# Enter invalid email format (no @ symbol)
+- tapOn:
+    text: Admin User Email
+
+- inputText:
+    text: "invalidemail"
+
+# Click Search button
+- tapOn:
+    text: "Search"
+
+# Verify validation error or no results
+# System should handle invalid email format gracefully
+- assertVisible:
+    text: "To see the data, search on any field"
+
+
+
+# Test 2: Invalid Cloud User Email format
+# Reset first
+- tapOn:
+    text: "Reset"
+
+
